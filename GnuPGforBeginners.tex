@@ -1,44 +1,34 @@
-\documentclass[pdf]{prosper}
-\usepackage[toc,highlight,DFKI]{HA-prosper}
+\documentclass[%
+mode=present,%
+paper=screen% smartboard
+]{powerdot}
 \usepackage{latabbr}
 \usepackage{verbatim}
-\usepackage[latin1]{inputenc}
-%\usepackage[normalem]{ulem}
-%\usepackage{listings}
-%\usepackage{mdwlist}
-%\def\CC{{C\nolinebreak[4]\hspace{-.05em}\raisebox{.35ex}{\scriptsize\bf ++}}}
+\usepackage[utf8]{inputenc}
 
 %% Spacing macros (with default argument).
 \newcommand{\vstretch}[1][1]{\vspace*{\stretch{#1}}}
 \newcommand{\hstretch}[1][1]{\hspace*{\stretch{#1}}}
  \makeatletter\renewcommand{\verbatim@font}{\scriptsize\tt}\makeatother
 \newcommand{\clopt}[1]{\texttt{{-}#1}}
-%\newrgbcolor{}{.19 .44 .61}
-%\newcommand{\highlight}[1]{\textbf{\selectfont\red#1}}
-%\newcommand{\gppoutput}[1]{\flushright{\selectfont\red$\bf\Longrightarrow$}~~~\texttt{#1}}
-%\newcommand{\gppmacro}[1]{\texttt{\##1}}
-%\newcommand{\gpparg}[1]{\texttt{\textit{#1}}}
-%\newcommand{\smallurl}[1]{{\footnotesize\url{#1}}}
-\title{GnuPG}
-\subtitle{The GNU Privacy Guard}
+\title{GnuPG for Beginners}
+%\subtitle{The GNU Privacy Guard}
 \author{%
   Tristan Miller\\
-  \institution{German Research Center for Artificial Intelligence}\\
-  \institution{Erwin-Schr\"odinger-Stra{\ss}e 57}\\
-  \institution{67663 Kaiserslautern}\\
-  \email{\url{tristan.miller@dfki.de}}
+  UKP Lab, Department of Computer Science\\
+  Technische Universit\"at Darmstadt
 }
-\HAPsetup{rf={Introduction to GnuPG --- \today},lf={\copyright\,2004 DFKI GmbH}}
+\pdsetup{
+  rf={GnuPG for Beginners},
+  lf={UKP Lab, Technische Universit\"at Darmstadt},
+%  palette={red},
+}
 
 \begin{document}
 \maketitle
 
 %=============================================================================
-%\tsectionandpart{Introduction}
-%=============================================================================
-
-%=============================================================================
-\tsection{Background}
+\section{Background}
 %=============================================================================
 \begin{slide}{Symmetric ciphers}
   \begin{itemize}
@@ -103,7 +93,7 @@
 \end{slide}
 
 %=============================================================================
-\tsection{Why use GnuPG at DFKI?}
+\section{Why use GnuPG at DFKI?}
 %=============================================================================
 \begin{slide}{Software distribution}
   If you distribute software on the Internet, there are many reasons
@@ -156,11 +146,11 @@
 
 
 %=============================================================================
-%\tsectionandpart{Using GnuPG}
+%\sectionandpart{Using GnuPG}
 %=============================================================================
 
 %=============================================================================
-\tsection{Acquiring the software}
+\section{Acquiring the software}
 %=============================================================================
 
 \begin{slide}{GnuPG \vs PGP \vs OpenPGP}
@@ -191,10 +181,10 @@
 \end{slide}
 
 %=============================================================================
-\tsection{Managing keys}
+\section{Managing keys}
 %=============================================================================
 
-\begin{slide}{Generating a new keypair}
+\begin{slide}[method=direct]{Generating a new keypair}
   All GnuPG functions are invoked through the \texttt{gpg} command.
   The command-line option \clopt{-gen-key} is used to create a new
   primary keypair:\\[1ex]
@@ -210,10 +200,10 @@ Please select what kind of key you want:
    (2) DSA (sign only)
    (4) RSA (sign only)
 Your selection? 
-\end{verbatim}%$
+\end{verbatim}
 \end{slide}
 
-\begin{slide}[toc=]{Generating a new keypair}
+\begin{slide}[method=direct,toc=]{Generating a new keypair}
   DSA keys are always 1024 bits.  For ElGamal keys, you must specify a
   key size.  The default key size of 1024 bits is appropriate for most
   users. (2048 bits is too slow and produces overly large
@@ -228,7 +218,7 @@ What keysize do you want? (1024)
 \end{verbatim}
 \end{slide}
 
-\begin{slide}[toc=]{Generating a new keypair}
+\begin{slide}[method=direct,toc=]{Generating a new keypair}
   Next, you must choose an expiration date. For most users a key
   that does not expire is adequate.\\[1ex]
 \begin{verbatim}
@@ -242,7 +232,7 @@ Key is valid for? (0)
 \end{verbatim}
 \end{slide}
 
-\begin{slide}[toc=]{Generating a new keypair}
+\begin{slide}[method=direct,toc=]{Generating a new keypair}
   You must now provide a user ID.  (It is possible to add additional
   user IDs later in case you want to use the key in two or more
   contexts.) A user ID should be created carefully since it cannot be
@@ -252,18 +242,18 @@ You need a User-ID to identify your key; the software constructs the
 user id from Real Name, Comment and Email Address in this form:
     "Heinrich Heine (Der Dichter) <heinrichh@duesseldorf.de>"
 
-Real name: Frettchen Rättchen
+Real name: Frettchen RÃ¤ttchen
 Email address: frettchen@dfki.de
 Comment: Haustier
 You are using the `iso-8859-1' character set.
 You selected this USER-ID:
-    "Frettchen Rättchen (Haustier) <frettchen@dfki.de>"
+    "Frettchen RÃ¤ttchen (Haustier) <frettchen@dfki.de>"
 
 Change (N)ame, (C)omment, (E)mail or (O)kay/(Q)uit?
 \end{verbatim}
 \end{slide}
 
-\begin{slide}[toc=]{Generating a new keypair}
+\begin{slide}[method=direct,toc=]{Generating a new keypair}
 Finally, you must enter a passphrase to protect your private key.\\[1ex]
 \begin{verbatim}
 You need a Passphrase to protect your private key.    
@@ -283,13 +273,13 @@ Example: \texttt{distel ist landen kammer puffen}
 \end{slide}
 
 \makeatletter\renewcommand{\verbatim@font}{\tiny\tt}\makeatother
-\begin{slide}{Your public keyring}
+\begin{slide}[method=direct]{Your public keyring}
   Your \textbf{keyring} is a list of all public keys you have
   generated or imported.  You can view it with the
   \clopt{-list-keys} option:\\[1ex]
 \begin{verbatim}
 [psy@port-3108:~]$ gpg --list-keys
-pub  1024D/B935225F 2005-01-27 Frettchen Rättchen (Haustier) <frettchen@dfki.de>
+pub  1024D/B935225F 2005-01-27 Frettchen RÃ¤ttchen (Haustier) <frettchen@dfki.de>
 sub  1024g/4DE87B5A 2005-01-27
 
 pub  1024D/EFBF4915 2003-10-24 Tristan Miller (Research scientist) <tristan.miller@dfki.de>
@@ -310,14 +300,14 @@ sub  1024g/B40BE860 2003-10-24
 \end{slide}
 
 \makeatletter\renewcommand{\verbatim@font}{\tiny\tt}\makeatother
-\begin{slide}{Generating a revocation certificate}
+\begin{slide}[method=direct]{Generating a revocation certificate}
   If you forget your passphrase or if your private key is compromised
   or lost, a \textbf{revocation certificate} may be published to
   notify others that the public key should no longer be used.\\[1ex]
 \begin{verbatim}
 [psy@port-3108:~]$ gpg --output revoke.asc --gen-revoke Frettchen
 
-sec  1024D/B935225F 2005-01-27   Frettchen Rättchen (Haustier) <frettchen@dfki.de>
+sec  1024D/B935225F 2005-01-27   Frettchen RÃ¤ttchen (Haustier) <frettchen@dfki.de>
 
 Create a revocation certificate for this key? y
 Please select the reason for the revocation:
@@ -336,7 +326,7 @@ place.
 \end{slide}
 
 \makeatletter\renewcommand{\verbatim@font}{\scriptsize\tt}\makeatother
-\begin{slide}{Exporting a public key}
+\begin{slide}[method=direct]{Exporting a public key}
 To communicate with others you must exchange public keys.  To export a
 public key on your keyring, use the \clopt{-export} option.  By
 default, keys are exported as binary data, but you can specify an
@@ -360,7 +350,7 @@ rqC5NSJfC+0AoIsTwOnzj0EJrx7deCHhM4z5KvUDAKDqTBAF9ZWYgh1wRKtTRZwj
 \end{verbatim}%$
 \end{slide}
 
-\begin{slide}{Importing a public key}
+\begin{slide}[method=direct]{Importing a public key}
   Most people publish their public key on their web page.  A public
   key may be added to your public keyring with the \clopt{-import}
   option. You can either specify a filename or paste from the
@@ -392,7 +382,7 @@ sub  2048g/0F16F686 2000-02-23
 \end{slide}
 
 %\makeatletter\renewcommand{\verbatim@font}{\tiny\tt}\makeatother
-\begin{slide}{Verifying a key}
+\begin{slide}[method=direct]{Verifying a key}
   \begin{itemize}
   \item A key's fingerprint is verified with the key's owner.
   \item This may be done in person or over the phone or through any
@@ -415,7 +405,7 @@ sub  2048g/0F16F686 2000-02-23
 \end{slide}
 
 \makeatletter\renewcommand{\verbatim@font}{\tiny\tt}\makeatother
-\begin{slide}{Signing a key}
+\begin{slide}[method=direct]{Signing a key}
   After checking the fingerprint, you may \textbf{sign} the key to
   validate it.  Since key verification is a weak point in public-key
   cryptography, you should be extremely careful and always check a
@@ -443,7 +433,7 @@ Your selection? (enter '?' for more information):
 \end{verbatim}%$
 \end{slide}
 
-\begin{slide}{Listing key signatures}
+\begin{slide}[method=direct]{Listing key signatures}
   Signatures are incorporated into a public key, and are distributed
   with it.  Once signed you can check the key to list the signatures
   on it and see the signature that you have added. Every user ID on
@@ -454,7 +444,7 @@ Your selection? (enter '?' for more information):
 [psy@port-3108:~]$ gpg --check-sigs Walter
 pub  1024D/85C62E2D 2000-02-23 Walter Sommer <sommer@dfki.uni-kl.de>
 sig!        85C62E2D 2000-02-23   Walter Sommer <sommer@dfki.uni-kl.de>
-sig!3       B935225F 2005-01-27   Frettchen Rättchen (Haustier) <frettchen@dfki.de>
+sig!3       B935225F 2005-01-27   Frettchen RÃ¤ttchen (Haustier) <frettchen@dfki.de>
 sub  2048g/0F16F686 2000-02-23
 sig!        85C62E2D 2000-02-23   Walter Sommer <sommer@dfki.uni-kl.de>
 \end{verbatim}%$
@@ -478,7 +468,7 @@ sig!        85C62E2D 2000-02-23   Walter Sommer <sommer@dfki.uni-kl.de>
   \end{itemize}
 \end{slide}
 
-\begin{slide}[toc=]{Public key servers}
+\begin{slide}[method=direct,toc=]{Public key servers}
   \begin{itemize}
   \item You can send and receive keys to/from keyservers with the
     \clopt{-send-key} and \clopt{-recv-key} options.  You also need to
@@ -497,11 +487,11 @@ gpg:              unchanged: 1
 \end{slide}
 
 %=============================================================================
-\tsection{Encryption}
+\section{Encryption}
 %=============================================================================
 
 \makeatletter\renewcommand{\verbatim@font}{\scriptsize\tt}\makeatother
-\begin{slide}{Encrypting a document}
+\begin{slide}[method=direct]{Encrypting a document}
   \begin{itemize}
   \item To encrypt a document the option \clopt{-encrypt} is used.
   \item You must have the public keys of the intended recipients, whom
@@ -520,7 +510,7 @@ gpg:              unchanged: 1
 \end{verbatim}%$
 \end{slide}
 
-\begin{slide}{Decrypting a document}
+\begin{slide}[method=direct]{Decrypting a document}
   \begin{itemize}
   \item To decrypt a message the option \clopt{-decrypt} is used.
   \item You need the private key to which the message was encrypted.
@@ -533,7 +523,7 @@ gpg:              unchanged: 1
 \end{verbatim}%$
 \end{slide}
 
-\begin{slide}{Symmetric encryption}
+\begin{slide}[method=direct]{Symmetric encryption}
   \begin{itemize}
   \item Documents may also be encrypted with a symmetric cipher
     instead of public-key cryptography.
@@ -551,7 +541,7 @@ Enter passphrase:
 \end{slide}
 
 %=============================================================================
-\tsection{Authentication}
+\section{Authentication}
 %=============================================================================
 
 \begin{slide}{Signing a document}
@@ -573,7 +563,7 @@ Enter passphrase:
 \end{slide}
 
 \makeatletter\renewcommand{\verbatim@font}{\tiny\tt}\makeatother
-\begin{slide}{Clearsigned documents}
+\begin{slide}[method=direct]{Clearsigned documents}
   \begin{itemize}
   \item The option \clopt{-clearsign} causes a text document to be
     wrapped in an ASCII-armored signature.
@@ -586,7 +576,7 @@ Enter passphrase:
 [psy@port-3108:~]$ gpg --clearsign hello.txt
 
 You need a passphrase to unlock the secret key for
-user: "Frettchen Rättchen (Haustier) <frettchen@dfki.de>"
+user: "Frettchen RÃ¤ttchen (Haustier) <frettchen@dfki.de>"
 1024-bit DSA key, ID B935225F, created 2005-01-27
 
 [psy@port-3108:~]$ cat hello.txt.asc
@@ -604,7 +594,7 @@ xUYHD/FazJNPyluZwOyjGCM=
 \end{verbatim}%$
 \end{slide}
 
-\begin{slide}{Detached signatures}
+\begin{slide}[method=direct]{Detached signatures}
   \begin{itemize}
   \item Clearsigned documents have two limitations:
     \begin{itemize}
@@ -622,7 +612,7 @@ xUYHD/FazJNPyluZwOyjGCM=
 \end{verbatim}
 \end{slide}
 
-\begin{slide}{Verifying signatures}
+\begin{slide}[method=direct]{Verifying signatures}
   \begin{itemize}
   \item Given a signed document and a public key, you can check the
     signature with the \clopt{-verify} option.
@@ -633,12 +623,12 @@ xUYHD/FazJNPyluZwOyjGCM=
 
 [psy@port-3108:~]$ gpg --verify hello.sig hello.txt
 gpg: Signature made Fri 28 Jan 2005 06:06:47 AM CET using DSA key ID B935225F
-gpg: Good signature from "Frettchen Rättchen (Haustier) <frettchen@dfki.de>"
+gpg: Good signature from "Frettchen RÃ¤ttchen (Haustier) <frettchen@dfki.de>"
 \end{verbatim}%$
 \end{slide}
 
 %=============================================================================
-\tsection{Trust in a key's owner}
+\section{Trust in a key's owner}
 %=============================================================================
 
 \begin{slide}{Trust model}
@@ -663,7 +653,7 @@ gpg: Good signature from "Frettchen Rättchen (Haustier) <frettchen@dfki.de>"
   \end{itemize}
 \end{slide}
 
-\begin{slide}{Assigning trust}
+\begin{slide}[method=direct]{Assigning trust}
 \begin{verbatim}
 [psy@port-3108:~]$ gpg --edit-key Walter
 pub  1024D/85C62E2D  created: 2000-02-23 expires: never      trust: -/f
@@ -710,7 +700,7 @@ Your decision?
 \end{slide}
 
 %=============================================================================
-\tsection{GUI tools}
+\section{GUI tools}
 %=============================================================================
 
 \begin{slide}{Key management}

@@ -126,4 +126,7 @@ sympy-plots-for-*.tex/
 *.sav
 
 *.len
-
+*~
+*.bm
+*.ps
+GnuPGforBeginners.pdf
