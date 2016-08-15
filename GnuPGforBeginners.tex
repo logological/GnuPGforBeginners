@@ -7,10 +7,19 @@ size=20pt,
 \usepackage{verbatim}
 \usepackage[utf8]{inputenc}
 
+% To do:
+%
+% Key signing parties
+% keybase.io
+% Maven signing
+% Git signing
+% More help (links?)
+
 %% Spacing macros (with default argument).
+\newcommand\vsp{\vspace{-16mm}}
 \newcommand{\vstretch}[1][1]{\vspace*{\stretch{#1}}}
 \newcommand{\hstretch}[1][1]{\hspace*{\stretch{#1}}}
- \makeatletter\renewcommand{\verbatim@font}{\scriptsize\tt}\makeatother
+\makeatletter\renewcommand{\verbatim@font}{\footnotesize\tt}\makeatother
 \newcommand{\clopt}[1]{\texttt{{-}#1}}
 \title{GnuPG for Beginners}
 %\subtitle{The GNU Privacy Guard}
@@ -28,6 +37,19 @@ size=20pt,
 
 \begin{document}
 \maketitle
+
+\begin{slide}[toc=]{Overview}
+  \begin{itemize}
+  \item Introduction of symmetric and public-key cryptography
+  \item GnuPG: A free implementation of the OpenPGP standard
+    \begin{itemize}
+    \item Creating and managing keys
+    \item Encrypting and decrypting documents
+    \item Generating and verifying digital signatures
+    \item GnuPG trust model
+    \end{itemize}
+  \end{itemize}
+\end{slide}
 
 %=============================================================================
 \section{Background}
@@ -116,7 +138,7 @@ size=20pt,
 
 
 %=============================================================================
-\section{Why use GnuPG at UKP?}
+\section{Why use GnuPG?}
 %=============================================================================
 \begin{slide}{Software distribution}
   If you distribute software on the Internet, there are many reasons
@@ -124,8 +146,7 @@ size=20pt,
   \begin{itemize}
   \item packages cannot be tampered with without breaking the signature
   \item corrupted downloads will break the signature
-  \item encapsulated signatures are supported and encouraged by many
-    popular archive and packaging formats (\eg RPM)
+  \item encapsulated signatures are supported and encouraged by major packaging formats: JAR (Maven), RPM, deb, \etc
   \end{itemize}
 \end{slide}
 
@@ -133,11 +154,11 @@ size=20pt,
   \begin{itemize}
   \item By making it a policy of yours to always sign important
     e-mails, you can prevent e-mails from being forged in your name.
-  \item By insisting that your colleagues always sign their e-mails,
+  \item When your colleagues sign their e-mails,
     you can always be sure you know who you're communicating with.
   \item Signing e-mails prevents deniability---if you receive a signed
     document from someone, they cannot later claim that they did not
-    send it.
+    produce it.
   \end{itemize}
 \end{slide}
 
@@ -146,12 +167,10 @@ size=20pt,
   drafts reduces the following risks:\\[1ex]
   \begin{itemize}
   \item sensitive communications intercepted by or leaked to press
-  \item research results stolen and published by unscrupulous
+  \item research results copied and published by unscrupulous
     colleagues or students
   \item corporate espionage on important projects with business
     research partners
-  \item confidential customer/client information is leaked; customers
-    sue DFKI for invasion of privacy
   \item private documents accidentally sent to wrong e-mail address
   \end{itemize}
 \end{slide}
@@ -185,17 +204,17 @@ size=20pt,
 
 \begin{slide}{Installing GnuPG}
   \begin{itemize}
-  \item download from \url{http://www.gnupg.org/}
+  \item download from \url{https://gnupg.org/} or from your OS's package manager
   \item compile from source or fetch a binary package for a supported
     system:
     \begin{itemize}
     \item GNU/Linux
     \item Mac OS X
-    \item Unix (POSIX-compliant)
+    \item Android
     \item Microsoft Windows
     \end{itemize}
-  \item GUIs are available, but an understanding of the underlying
-    command-line version is important
+  \item Third-party GUIs are available, but an understanding of the underlying
+    command-line version is helpful
   \end{itemize}
 \end{slide}
 
@@ -204,42 +223,50 @@ size=20pt,
 %=============================================================================
 
 \begin{slide}[method=direct]{Generating a new keypair}
-  All GnuPG functions are invoked through the \texttt{gpg} command.
-  The command-line option \clopt{-gen-key} is used to create a new
-  primary keypair:\\[1ex]
+  \begin{itemize}
+  \item All GnuPG functions are invoked through the \texttt{gpg} command.
+  \item The command-line option \clopt{-gen-key} is used to create a new
+  primary keypair.
+  \end{itemize}
 \begin{verbatim}
-[psy@port-3108:~]$ gpg --gen-key
-gpg (GnuPG) 1.2.6; Copyright (C) 2004 Free Software Foundation, Inc.
-This program comes with ABSOLUTELY NO WARRANTY.
-This is free software, and you are welcome to redistribute it
-under certain conditions. See the file COPYING for details.
+$ gpg --gen-key
+gpg (GnuPG) 2.0.24; Copyright (C) 2013 Free Software Foundation, Inc.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
 
 Please select what kind of key you want:
-   (1) DSA and ElGamal (default)
-   (2) DSA (sign only)
+   (1) RSA and RSA (default)
+   (2) DSA and Elgamal
+   (3) DSA (sign only)
    (4) RSA (sign only)
-Your selection? 
+Your selection?
 \end{verbatim}
 \end{slide}
 
 \begin{slide}[method=direct,toc=]{Generating a new keypair}
-  DSA keys are always 1024 bits.  For ElGamal keys, you must specify a
-  key size.  The default key size of 1024 bits is appropriate for most
-  users. (2048 bits is too slow and produces overly large
-  signatures; 768 bits is too easy to crack.)\\[1ex]
+  \begin{itemize}
+  \item You will be prompted for a key type and key size.
+  \item The defaults (2048-bit RSA keys, in recent GnuPG versions) are
+    generally sensible.
+  \item Larger key sizes provide extra security at the cost of speed;
+    if future-proofing is important for you, use the maximum key size
+    of 4096 bits.
+  \end{itemize}
 \begin{verbatim}
-DSA keypair will have 1024 bits.
-About to generate a new ELG-E keypair.
-              minimum keysize is  768 bits
-              default keysize is 1024 bits
-    highest suggested keysize is 2048 bits
-What keysize do you want? (1024) 
+Your selection? 1
+RSA keys may be between 1024 and 4096 bits long.
+What keysize do you want? (2048)
 \end{verbatim}
 \end{slide}
 
 \begin{slide}[method=direct,toc=]{Generating a new keypair}
-  Next, you must choose an expiration date. For most users a key
-  that does not expire is adequate.\\[1ex]
+  \begin{itemize}
+  \item Next, you must choose an expiration date.
+  \item For most users a key that does not expire is adequate.
+  \item Some people prefer to set an expiry date (say, two years) as a
+    safeguard. You can periodically extend the expiry date if your key
+    is still in use.
+  \end{itemize}
 \begin{verbatim}
 Please specify how long the key should be valid.
          0 = key does not expire
@@ -252,83 +279,97 @@ Key is valid for? (0)
 \end{slide}
 
 \begin{slide}[method=direct,toc=]{Generating a new keypair}
-  You must now provide a user ID.  (It is possible to add additional
-  user IDs later in case you want to use the key in two or more
-  contexts.) A user ID should be created carefully since it cannot be
-  edited after it is created.\\[1ex]
+  \begin{itemize}
+  \item You must now provide a user ID.
+  \item It is possible to add additional user IDs later in case you
+    want to use the key in two or more contexts.
+  \item A user ID should be created carefully since it cannot be
+    edited after it is created!
+  \item Avoid using the ``Comment'' field without good reason.
+  \end{itemize}
 \begin{verbatim}
-You need a User-ID to identify your key; the software constructs the
-user id from Real Name, Comment and Email Address in this form:
-    "Heinrich Heine (Der Dichter) <heinrichh@duesseldorf.de>"
+GnuPG needs to construct a user ID to identify your key.
 
 Real name: Frettchen Rättchen
 Email address: frettchen@dfki.de
-Comment: Haustier
-You are using the `iso-8859-1' character set.
+Comment: 
+You are using the `utf-8' character set.
 You selected this USER-ID:
-    "Frettchen Rättchen (Haustier) <frettchen@dfki.de>"
+    "Frettchen Rättchen <frettchen@dfki.de>"
 
 Change (N)ame, (C)omment, (E)mail or (O)kay/(Q)uit?
 \end{verbatim}
 \end{slide}
 
 \begin{slide}[method=direct,toc=]{Generating a new keypair}
-Finally, you must enter a passphrase to protect your private key.\\[1ex]
+  \begin{itemize}
+  \item Finally, you must enter a passphrase to protect your private key.
+  \end{itemize}
 \begin{verbatim}
-You need a Passphrase to protect your private key.    
+You need a Passphrase to protect your secret key.    
 
 Enter passphrase: 
-
 \end{verbatim}
-Because this password protects access to your PGP identity, it should
-be carefully chosen.  It must be long enough to be secure, but also
-easy for you to remember and type.\\[1ex]
 
-At \url{http://www.diceware.com/} you will find a method of generating
-long but easy-to-remember passwords by combining five English or
-German words.\\[1ex]
+  \begin{itemize}
+  \item Because this passphrase protects access to your PGP identity, it
+    should be carefully chosen.  It must be long enough to be secure,
+    but also easy for you to remember and type.
+  \item At \url{http://www.diceware.com/} you will find a method of
+    generating long but easy-to-remember passphrases by combining five
+    English or German words.
 
-Example: \texttt{distel ist landen kammer puffen}
+    Example: \texttt{distel ist landen kammer puffen}
+  \end{itemize}
 \end{slide}
 
-\makeatletter\renewcommand{\verbatim@font}{\tiny\tt}\makeatother
+%\makeatletter\renewcommand{\verbatim@font}{\tiny\tt}\makeatother
 \begin{slide}[method=direct]{Your public keyring}
-  Your \textbf{keyring} is a list of all public keys you have
-  generated or imported.  You can view it with the
-  \clopt{-list-keys} option:\\[1ex]
+  \begin{itemize}
+  \item Your \textbf{keyring} is a list of all public keys you have
+    generated or imported.  You can view it with the
+    \clopt{-list-keys} option:
+  \end{itemize}
 \begin{verbatim}
-[psy@port-3108:~]$ gpg --list-keys
-pub  1024D/B935225F 2005-01-27 Frettchen Rättchen (Haustier) <frettchen@dfki.de>
-sub  1024g/4DE87B5A 2005-01-27
+$ gpg --list-keys
+/home/frettchen/.gnupg/pubring.gpg
+----------------------------------
+pub   2048R/4116CBB0 2016-08-15
+uid       [ultimate] Frettchen Rättchen <frettchen@dfki.de>
+sub   2048R/FA659AB0 2016-08-15
 
 pub  1024D/EFBF4915 2003-10-24 Tristan Miller (Research scientist) <tristan.miller@dfki.de>
 uid                            Tristan Miller <psychonaut@nothingisreal.com>
 sub  1024g/B40BE860 2003-10-24
-
 \end{verbatim}%$
-  Most command-line arguments dealing with keys let you specify a
-  particular key or set of keys.  You can use the key's ID or any part
-  of the user ID.  For example:\\[1ex]
+  \begin{itemize}
+  \item Most command-line arguments dealing with keys let you specify
+    a particular key or set of keys.  You can use the key's ID or any
+    part of the user ID.  For example:
+  \end{itemize}
 \begin{verbatim}
-[psy@port-3108:~]$ gpg --list-keys Tristan
+$ gpg --list-keys Tristan
 pub  1024D/EFBF4915 2003-10-24 Tristan Miller (Research scientist) <tristan.miller@dfki.de>
 uid                            Tristan Miller <psychonaut@nothingisreal.com>
 sub  1024g/B40BE860 2003-10-24
-
-\end{verbatim}%$
+\end{verbatim}
 \end{slide}
 
-\makeatletter\renewcommand{\verbatim@font}{\tiny\tt}\makeatother
+%\makeatletter\renewcommand{\verbatim@font}{\tiny\tt}\makeatother
 \begin{slide}[method=direct]{Generating a revocation certificate}
-  If you forget your passphrase or if your private key is compromised
-  or lost, a \textbf{revocation certificate} may be published to
-  notify others that the public key should no longer be used.\\[1ex]
+  \begin{itemize}
+  \item If you forget your passphrase or if your private key is
+    compromised or lost, a \textbf{revocation certificate} may be
+    published to notify others that the public key should no longer be
+    used.
+  \end{itemize}
+\vsp
 \begin{verbatim}
-[psy@port-3108:~]$ gpg --output revoke.asc --gen-revoke Frettchen
+$ gpg --output revoke.asc --gen-revoke Frettchen
 
-sec  1024D/B935225F 2005-01-27   Frettchen Rättchen (Haustier) <frettchen@dfki.de>
+sec  2048R/4116CBB0 2016-08-15 Frettchen Rättchen <frettchen@dfki.de>
 
-Create a revocation certificate for this key? y
+Create a revocation certificate for this key? (y/N) y
 Please select the reason for the revocation:
   0 = No reason specified
   1 = Key has been compromised
@@ -336,53 +377,56 @@ Please select the reason for the revocation:
   3 = Key is no longer used
   Q = Cancel
 (Probably you want to select 1 here)
-Your decision?
-
-\end{verbatim}%$
-
-The revocation certificate should be printed out and stored in a safe
-place.
+Your decision? 
+\end{verbatim}
+  % \begin{itemize}
+  % \item The revocation certificate should be printed out and stored in
+  %   a safe place.
+  % \end{itemize}
 \end{slide}
 
-\makeatletter\renewcommand{\verbatim@font}{\scriptsize\tt}\makeatother
+%\makeatletter\renewcommand{\verbatim@font}{\scriptsize\tt}\makeatother
 \begin{slide}[method=direct]{Exporting a public key}
-To communicate with others you must exchange public keys.  To export a
-public key on your keyring, use the \clopt{-export} option.  By
-default, keys are exported as binary data, but you can specify an
-ASCII encoding using the \clopt{-armor} option.\\[1ex]
+  \begin{itemize}
+  \item To communicate with others you must exchange public keys.
+  \item To export a public key on your keyring, use the
+    \clopt{-export} option.
+  \item By default, keys are exported as binary data, but you can
+    specify an ASCII encoding using the \clopt{-armor} option.
+  \end{itemize}
+\vsp
 \begin{verbatim}
-[psy@port-3108:~]$ gpg --armor --export Frettchen
+$ gpg --armor --export Frettchen
 -----BEGIN PGP PUBLIC KEY BLOCK-----
-Version: GnuPG v1.2.6 (GNU/Linux)
+Version: GnuPG v2
 
-eO5hydwuQO0IOr6kQmsXgELS3dc0TC0lNoTrIZv1uUtV3objRktpBL62UwCg/ESR
-vKJ5yJ0KnFHrSvkJvq9/41UD/ihE8AOgYR6hFH0xKcZc03mpaqfto2B6PUHLi5yt
-CjRDyhtZOq5RdN1+Bqll1uHt3yINClY9l0dIr5zZ6PO1QKJIU2gOtvnLyKrJ9VaZ
-AUF7Hl/TZ9UDGNu6yyHI5CJ2Kc4XB0qOlCUd2lHfSq7N+rA3mv4zvFqd/uYcUzqZ
+mQENBFex0P4BCADR8+CMx/j8mIMQEMWjS/2GOSth1tR5mSwuk31oPMn0xtPTY+oK
+BshOMDJjujJew/+aJBu2rTBGQdfza4W/jBLy/uwU8C92+Rp6SBsPw9P+f0g297pm
                              ...
-PEOgHRvMud9mK0p/KBvffexKxzQlcVLjBQUY7BvU5wUbilNMYevw9m+0H+usBITD
-EU1pseZmXp4NYelfFO8h7XdKplRs17LhlYhJBBgRAgAJBQJB+X8WAhsMAAoJEL0B
-rqC5NSJfC+0AoIsTwOnzj0EJrx7deCHhM4z5KvUDAKDqTBAF9ZWYgh1wRKtTRZwj
-2iptCA==
-=9nBI
+WWKwsmkDsqlJzdDVsFHYYJTHy+MUBRzrVbuG8lscCeOVUnUf8oIkiydrCwprl249
+iz5kKxk4VcCdEmfEluj9AZxhONKKnH4X+cyVrk9tIsup9mjMCqCv
+=9bBk
 -----END PGP PUBLIC KEY BLOCK-----
-\end{verbatim}%$
+\end{verbatim}
 \end{slide}
 
 \begin{slide}[method=direct]{Importing a public key}
-  Most people publish their public key on their web page.  A public
-  key may be added to your public keyring with the \clopt{-import}
-  option. You can either specify a filename or paste from the
-  clipboard into stdin.\\[1ex]
+  \begin{itemize}
+  \item Many people publish their public key on their web page.
+  \item A public key may be added to your public keyring with the
+    \clopt{-import} option. You can either specify a filename or paste
+    from the clipboard into stdin.
+  \end{itemize}
 \begin{verbatim}
-[psy@port-3108:~]$ gpg --import walter.gpg
-gpg: key 85C62E2D: public key imported
+$ gpg --import /tmp/smith.gpg
+gpg: key 65B46947: public key "John Smith <smith@example.com>" imported
 gpg: Total number processed: 1
-gpg:               imported: 1
+gpg:               imported: 1  (RSA: 1)
 
-[psy@port-3108:~]$ gpg --list-keys Sommer
-pub  1024D/85C62E2D 2000-02-23 Walter Sommer <sommer@dfki.uni-kl.de>
-sub  2048g/0F16F686 2000-02-23
+$ gpg --list-keys Smith
+pub   2048R/65B46947 2016-08-15
+uid       [ unknown] John Smith <smith@example.com>
+sub   2048R/4D993DDE 2016-08-15
 \end{verbatim}
 \end{slide}
 
@@ -416,29 +460,40 @@ sub  2048g/0F16F686 2000-02-23
 
 \begin{verbatim}
 
-[psy@port-3108:~]$ gpg --fingerprint Walter
-pub  1024D/85C62E2D 2000-02-23 Walter Sommer <sommer@dfki.uni-kl.de>
-     Key fingerprint = 86F2 9A0D BBE2 89B6 F397  3934 082C 6529 85C6 2E2D
-sub  2048g/0F16F686 2000-02-23
-\end{verbatim}%$
+$ gpg --fingerprint Smith
+pub   2048R/65B46947 2016-08-15
+      Key fingerprint = 42A4 5686 FFC8 B7B1 0FCF  F3BD 397F 0C60 65B4 6947
+uid       [ unknown] John Smith <smith@example.com>
+sub   2048R/4D993DDE 2016-08-15
+\end{verbatim}
 \end{slide}
 
-\makeatletter\renewcommand{\verbatim@font}{\tiny\tt}\makeatother
+%\makeatletter\renewcommand{\verbatim@font}{\tiny\tt}\makeatother
 \begin{slide}[method=direct]{Signing a key}
-  After checking the fingerprint, you may \textbf{sign} the key to
-  validate it.  Since key verification is a weak point in public-key
-  cryptography, you should be extremely careful and always check a
-  key's fingerprint with the owner before signing the key.\\[1ex]
+  \begin{itemize}
+  \item After checking the fingerprint, you may \textbf{sign} the key
+    to validate it.
+  \item Ideally you should also tell GnuPG how carefully you have
+    verified that they key you are signing really belongs to who you
+    think it does.
+  \end{itemize}
+\end{slide}
+
+\begin{slide}[method=direct,toc=]{Signing a key}
 \begin{verbatim}
-[psy@port-3108:~]$ gpg --sign-key Walter
-pub  1024D/85C62E2D  created: 2000-02-23 expires: never      trust: -/-
-sub  2048g/0F16F686  created: 2000-02-23 expires: never
-(1). Walter Sommer <sommer@dfki.uni-kl.de>
+$ gpg --sign-key --ask-cert-level Smith
 
-pub  1024D/85C62E2D  created: 2000-02-23 expires: never      trust: -/-
- Primary key fingerprint: 86F2 9A0D BBE2 89B6 F397  3934 082C 6529 85C6 2E2D
+pub  2048R/65B46947  created: 2016-08-15  expires: never       usage: SC  
+                     trust: unknown       validity: full
+sub  2048R/4D993DDE  created: 2016-08-15  expires: never       usage: E   
+[  full  ] (1). John Smith <smith@example.com>
 
-     Walter Sommer <sommer@dfki.uni-kl.de>
+
+pub  2048R/65B46947  created: 2016-08-15  expires: never       usage: SC  
+                     trust: unknown       validity: full
+ Primary key fingerprint: 42A4 5686 FFC8 B7B1 0FCF  F3BD 397F 0C60 65B4 6947
+
+     John Smith <smith@example.com>
 
 How carefully have you verified the key you are about to sign actually belongs
 to the person named above?  If you don't know what to answer, enter "0".
@@ -448,33 +503,41 @@ to the person named above?  If you don't know what to answer, enter "0".
    (2) I have done casual checking.
    (3) I have done very careful checking.
 
-Your selection? (enter '?' for more information):
-\end{verbatim}%$
+Your selection? (enter `?' for more information):
+\end{verbatim}
 \end{slide}
 
 \begin{slide}[method=direct]{Listing key signatures}
-  Signatures are incorporated into a public key, and are distributed
-  with it.  Once signed you can check the key to list the signatures
-  on it and see the signature that you have added. Every user ID on
-  the key will have one or more self-signatures as well as a signature
-  for each user that has validated the key.\\[1ex]
-
+  \begin{itemize}
+  \item Signatures are incorporated into a public key, and are
+    distributed with it.
+  \item Once signed you can check the key to list the signatures on it
+    and see the signature that you have added.
+  \item Every user ID on the key will have one or more self-signatures
+    as well as a signature for each user that has validated the key.
+  \end{itemize}
+\vsp
 \begin{verbatim}
-[psy@port-3108:~]$ gpg --check-sigs Walter
-pub  1024D/85C62E2D 2000-02-23 Walter Sommer <sommer@dfki.uni-kl.de>
-sig!        85C62E2D 2000-02-23   Walter Sommer <sommer@dfki.uni-kl.de>
-sig!3       B935225F 2005-01-27   Frettchen Rättchen (Haustier) <frettchen@dfki.de>
-sub  2048g/0F16F686 2000-02-23
-sig!        85C62E2D 2000-02-23   Walter Sommer <sommer@dfki.uni-kl.de>
-\end{verbatim}%$
+$ gpg --check-sigs Smith
+gpg: checking the trustdb
+gpg: 3 marginal(s) needed, 1 complete(s) needed, PGP trust model
+gpg: depth: 0  valid:   1  signed:   1  trust: 0-, 0q, 0n, 0m, 0f, 1u
+gpg: depth: 1  valid:   1  signed:   0  trust: 1-, 0q, 0n, 0m, 0f, 0u
+pub   2048R/65B46947 2016-08-15
+uid       [  full  ] John Smith <smith@example.com>
+sig!3        65B46947 2016-08-15  John Smith <smith@example.com>
+sig!2        4116CBB0 2016-08-15  Frettchen Rättchen <frettchen@dfki.de>
+sub   2048R/4D993DDE 2016-08-15
+sig!         65B46947 2016-08-15  John Smith <smith@example.com>
+\end{verbatim}
 \end{slide}
 
 \begin{slide}{Public key servers}
   \begin{itemize}
-  \item Most people publish their public key on their web page.
+  \item Many people publish their public key on their web page.
   \item However, not everyone has a web page, or knows where to find
     yours.
-  \item To solve this problem \textbf{public key servers} are used to
+  \item To solve this problem, \textbf{public key servers} are used to
     collect and distribute public keys.
   \item A public key received by the server is either added to the
     server's database or merged with the existing key if already
@@ -494,12 +557,12 @@ sig!        85C62E2D 2000-02-23   Walter Sommer <sommer@dfki.uni-kl.de>
     specify which keyserver using the \clopt{-keyserver} option.
   \end{itemize}
 \begin{verbatim}
+$ gpg --keyserver hkps://hkps.pool.sks-keyservers.net --send-key BF8A2EE4
+gpg: sending key BF8A2EE4 to hkps server hkps.pool.sks-keyservers.net
 
-[psy@port-3108:~]$ gpg --keyserver wwwkeys.eu.pgp.net --send-key Walter
-gpg: success sending to `wwwkeys.eu.pgp.net' (status=200)
-
-[psy@port-3108:~]$ gpg --keyserver wwwkeys.eu.pgp.net --recv-key EFBF4915
-gpg: key EFBF4915: "Tristan Miller (Research scientist) <tristan.miller@dfki.de>" not changed
+$ gpg --keyserver hkps://hkps.pool.sks-keyservers.net --recv-key BF8A2EE4
+gpg: requesting key BF8A2EE4 from hkps server hkps.pool.sks-keyservers.net
+gpg: key BF8A2EE4: "Tristan Miller <tristan@logological.org>" not changed
 gpg: Total number processed: 1
 gpg:              unchanged: 1
 \end{verbatim}
@@ -509,7 +572,7 @@ gpg:              unchanged: 1
 \section{Encryption}
 %=============================================================================
 
-\makeatletter\renewcommand{\verbatim@font}{\scriptsize\tt}\makeatother
+%\makeatletter\renewcommand{\verbatim@font}{\scriptsize\tt}\makeatother
 \begin{slide}[method=direct]{Encrypting a document}
   \begin{itemize}
   \item To encrypt a document the option \clopt{-encrypt} is used.
@@ -524,9 +587,8 @@ gpg:              unchanged: 1
     able to decrypt and view the document!
   \end{itemize}
 \begin{verbatim}
-
-[psy@port-3108:~]$ gpg --output doc.gpg --encrypt --recipient Walter
-\end{verbatim}%$
+$ gpg --output doc.gpg --encrypt --recipient Smith
+\end{verbatim}
 \end{slide}
 
 \begin{slide}[method=direct]{Decrypting a document}
@@ -537,9 +599,8 @@ gpg:              unchanged: 1
     output.
   \end{itemize}
 \begin{verbatim}
-
-[sommer@serv-3100:~]$ gpg --output doc.txt --decrypt doc.gpg
-\end{verbatim}%$
+$ gpg --output doc.txt --decrypt doc.gpg
+\end{verbatim}
 \end{slide}
 
 \begin{slide}[method=direct]{Symmetric encryption}
@@ -553,10 +614,9 @@ gpg:              unchanged: 1
     and decrypted as usual with \clopt{-decrypt}.
   \end{itemize}
 \begin{verbatim}
-
-[psy@port-3108:~]$ gpg --output doc.gpg --symmetric doc.txt
+$ gpg --output doc.gpg --symmetric doc.txt
 Enter passphrase:
-\end{verbatim}%$
+\end{verbatim}
 \end{slide}
 
 %=============================================================================
@@ -571,10 +631,10 @@ Enter passphrase:
   \item A digital signature can serve the same purpose as a
     hand-written signature with the additional benefit of being
     tamper-resistant.
-  \item Software distributions are signed so that users who download
+  \item Software packages can be signed so that users who download
     them can verify that they have not been modified since they were
     packaged.
-  \item E-mails are signed so that the recipient can verify that the
+  \item E-mails can be signed so that the recipient can verify that the
     message has not been forged or altered.
   \item There are two common ways of producing a signature:
     clearsigning and detatched signatures
@@ -590,27 +650,30 @@ Enter passphrase:
     postings.
   \end{itemize}
 \begin{verbatim}
-
-[psy@port-3108:~]$ echo "Hello, world!" >hello.txt
-[psy@port-3108:~]$ gpg --clearsign hello.txt
+$ echo "Hello, world\!" >hello.txt
+$ gpg --clearsign hello.txt
 
 You need a passphrase to unlock the secret key for
-user: "Frettchen Rättchen (Haustier) <frettchen@dfki.de>"
-1024-bit DSA key, ID B935225F, created 2005-01-27
+user: "Frettchen Rättchen <frettchen@dfki.de>"
+2048-bit RSA key, ID 4116CBB0, created 2016-08-15
 
-[psy@port-3108:~]$ cat hello.txt.asc
+$ cat hello.txt.asc
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA1
 
-Hello, world!
+Hello, world\!
 -----BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.2.6 (GNU/Linux)
+Version: GnuPG v2
 
-iD8DBQFB+cUmvQGuoLk1Il8RAiw5AJ46quj41qP0prQVv8Zpyeki6Z/WrQCgljYB
-xUYHD/FazJNPyluZwOyjGCM=
-=VHb7
+iQEcBAEBAgAGBQJXsdvKAAoJEFNJFOhBFsuwn/oH/1Io2fYEC/zOIgwEMZqlg2Qi
+SfGiP8mu8l5nIjWBZtvrxltF9oocx8YJBF4Xt0TqAW6XN82dnAaw6+cu3xkcayqh
+BJqFdXsxJ8cqG2kNDjkeO3fkQvVhiUquYI9kRIP1xBH78GdijvRG9pQQl4Ty1hiw
+NkH9GW1eYRtzfckJMOj6DpVzWJNLJg8Jt4oyvKQ28W4zhTIy34ke8McGel9h57dj
+luPU7q38IH6N/9VEoyTLk0tv6DTIId8dqkXz7TJfkMVHIGcsPbHomvx+lPCOn+5F
+WukuStzm7sJLjHl9ootfuxCvOrshmuZVNjxoAhLW1UdPR/b8Wu8gaFmOfSURcTY=
+=tTMY
 -----END PGP SIGNATURE-----
-\end{verbatim}%$
+\end{verbatim}
 \end{slide}
 
 \begin{slide}[method=direct]{Detached signatures}
@@ -626,8 +689,7 @@ xUYHD/FazJNPyluZwOyjGCM=
   \item For this the \clopt{--detach-sig} option is used.
   \end{itemize}
 \begin{verbatim}
-
-[psy@port-3108:~]$ gpg --armor --output hello.sig --detach-sig hello.txt
+$ gpg --armor --output hello.sig --detach-sig hello.txt
 \end{verbatim}
 \end{slide}
 
@@ -639,16 +701,19 @@ xUYHD/FazJNPyluZwOyjGCM=
     both the signature and document filenames on the command line.
   \end{itemize}
 \begin{verbatim}
-
-[psy@port-3108:~]$ gpg --verify hello.sig hello.txt
-gpg: Signature made Fri 28 Jan 2005 06:06:47 AM CET using DSA key ID B935225F
-gpg: Good signature from "Frettchen Rättchen (Haustier) <frettchen@dfki.de>"
-\end{verbatim}%$
+$ gpg --verify hello.sig hello.txt
+gpg: Signature made Mon 15 Aug 2016 05:14:28 PM CEST using RSA key ID 4116CBB0
+gpg: Good signature from "Frettchen Rättchen <frettchen@dfki.de>" [ultimate]
+\end{verbatim}
 \end{slide}
 
 %=============================================================================
 \section{Trust in a key's owner}
 %=============================================================================
+
+\begin{slide}[toc=]{Web of trust}
+\centering\includegraphics[width=\linewidth]{images/Web_of_Trust.eps}
+\end{slide}
 
 \begin{slide}{Trust model}
   \begin{itemize}
@@ -674,29 +739,35 @@ gpg: Good signature from "Frettchen Rättchen (Haustier) <frettchen@dfki.de>"
 
 \begin{slide}[method=direct]{Assigning trust}
 \begin{verbatim}
-[psy@port-3108:~]$ gpg --edit-key Walter
-pub  1024D/85C62E2D  created: 2000-02-23 expires: never      trust: -/f
-sub  2048g/0F16F686  created: 2000-02-23 expires: never
-(1). Walter Sommer <sommer@dfki.uni-kl.de>
+$ gpg --edit-key John
+gpg (GnuPG) 2.0.24; Copyright (C) 2013 Free Software Foundation, Inc.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
 
-Command> trust
-pub  1024D/85C62E2D  created: 2000-02-23 expires: never      trust: -/f
-sub  2048g/0F16F686  created: 2000-02-23 expires: never
-(1). Walter Sommer <sommer@dfki.uni-kl.de>
 
-Please decide how far you trust this user to correctly
-verify other users' keys (by looking at passports,
-checking fingerprints from different sources...)?
+pub  2048R/65B46947  created: 2016-08-15  expires: never       usage: SC  
+                     trust: unknown       validity: full
+sub  2048R/4D993DDE  created: 2016-08-15  expires: never       usage: E   
+[  full  ] (1). John Smith <smith@example.com>
 
- 1 = Don't know
- 2 = I do NOT trust
- 3 = I trust marginally
- 4 = I trust fully
- 5 = I trust ultimately
- m = back to the main menu
+gpg> trust
+pub  2048R/65B46947  created: 2016-08-15  expires: never       usage: SC  
+                     trust: unknown       validity: full
+sub  2048R/4D993DDE  created: 2016-08-15  expires: never       usage: E   
+[  full  ] (1). John Smith <smith@example.com>
 
-Your decision?  
-\end{verbatim}%$
+Please decide how far you trust this user to correctly verify other users' keys
+(by looking at passports, checking fingerprints from different sources, etc.)
+
+  1 = I don't know or won't say
+  2 = I do NOT trust
+  3 = I trust marginally
+  4 = I trust fully
+  5 = I trust ultimately
+  m = back to the main menu
+
+Your decision?
+\end{verbatim}
 \end{slide}
 
 \begin{slide}{Using trust to validate keys}
@@ -716,6 +787,10 @@ Your decision?
       key is five steps or shorter.
     \end{enumerate}
   \end{itemize}
+\end{slide}
+
+\begin{slide}[toc=]{Web of trust}
+\centering\includegraphics[width=\linewidth]{images/Web_of_Trust_2.eps}
 \end{slide}
 
 %=============================================================================
