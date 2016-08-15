@@ -223,7 +223,7 @@ size=20pt,
 \section{Managing keys}
 %=============================================================================
 
-\begin{slide}[method=direct]{Generating a new keypair}
+\begin{slide}[method=direct]{Generating keypairs}
   \begin{itemize}
   \item All GnuPG functions are invoked through the \texttt{gpg} command.
   \item The command-line option \clopt{-gen-key} is used to create a new
@@ -363,7 +363,7 @@ sub  1024g/B40BE860 2003-10-24
 \end{slide}
 
 %\makeatletter\renewcommand{\verbatim@font}{\tiny\tt}\makeatother
-\begin{slide}[method=direct]{Generating a revocation certificate}
+\begin{slide}[method=direct]{Revocation certificates}
   \begin{itemize}
   \item If you forget your passphrase or if your private key is
     compromised or lost, a \textbf{revocation certificate} may be
@@ -801,10 +801,10 @@ Your decision?
 \end{slide}
 
 %=============================================================================
-\section{GUI tools}
+\section{Further topics}
 %=============================================================================
 
-\begin{slide}{Key management}
+\begin{slide}{GUIs}
   There are a number of key management tools which let you generate,
   list, edit, import, export, and sign the keys on your keyring.
   \begin{figure}[H]
@@ -815,8 +815,9 @@ Your decision?
 \end{slide}
 
 \begin{slide}{E-mail integration}
-  Many e-mail clients now support digital signatures.  For each e-mail
-  account, you can associate a public key for signing and encryption.
+  Many e-mail clients support GnuPG, natively or via plugins.  For
+  each e-mail account, you can associate a public key for signing and
+  encryption.
   \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{images/kmail_conf.eps}
@@ -841,6 +842,26 @@ Your decision?
     \includegraphics[width=0.7\textwidth]{images/kmail_send.eps}
     \label{fig:kmail_send}
   \end{figure}
+\end{slide}
+
+\begin{slide}{SCM integration}
+
+\end{slide}
+
+\begin{slide}{Packaging integration}
+  \begin{itemize}
+  \item Many software packaging tools support GnuPG, natively or via plugins.
+  \end{itemize}
+\end{slide}
+
+\begin{slide}{Online resources}
+  \begin{itemize}
+  \item \href{https://gnupg.org/}{GnuPG home page} and \href{https://www.gnupg.org/faq/gnupg-faq.html}{FAQ}
+  \item \href{http://security.stackexchange.com/questions/tagged/gnupg}{InfoSec Stack Exchange questions on GnuPG}
+  \item \href{https://riseup.net/en/security/message-security/openpgp/best-practices}{OpenPGP Best Practices} from Riseup
+  \item \href{https://keybase.io/}{Keybase}
+  \item \href{http://www.openpgp-courses.org/}{OpenPGP courses and lobbying}
+  \end{itemize}
 \end{slide}
 
 \begin{slide}[toc=]{}
