@@ -16,7 +16,7 @@
    sodipodi:version="0.32"
    inkscape:version="0.91 r13725"
    version="1.0"
-   sodipodi:docname="Web_of_Trust.svg"
+   sodipodi:docname="Web_of_Trust_2.svg"
    inkscape:output_extension="org.inkscape.output.svg.inkscape">
   <defs
      id="defs4">
@@ -64,18 +64,18 @@
      objecttolerance="10"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1"
-     inkscape:cx="415.09091"
-     inkscape:cy="200"
+     inkscape:zoom="1.2316035"
+     inkscape:cx="385.38373"
+     inkscape:cy="200.35131"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
      showguides="true"
      inkscape:guide-bbox="true"
      inkscape:window-width="1280"
-     inkscape:window-height="731"
-     inkscape:window-x="0"
-     inkscape:window-y="6"
+     inkscape:window-height="706"
+     inkscape:window-x="636"
+     inkscape:window-y="140"
      inkscape:window-maximized="0" />
   <metadata
      id="metadata7">
@@ -85,7 +85,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title>Web of Trust</dc:title>
+        <dc:title />
         <dc:language>de-DE</dc:language>
         <dc:description>Schematische Darstellung eines Web of Trust</dc:description>
         <cc:license
@@ -161,256 +161,215 @@
        x="485"
        y="15" />
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:none;marker-end:url(#Arrow1Lend)"
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:none;marker-end:url(#Arrow1Lend)"
        d="m 315,40 170,0"
        id="path3213"
        inkscape:connector-type="polyline"
        inkscape:connection-start="#rect2421"
        inkscape:connection-end="#rect2425"
+       inkscape:connection-start-point="d4"
+       inkscape:connection-end-point="d4"
        inkscape:connector-curvature="0" />
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Lstart);marker-end:none"
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Lstart);marker-end:none"
        d="M 686.5625,175 583.4375,65"
        id="path3217"
        inkscape:connector-type="polyline"
        inkscape:connection-start="#rect2419"
        inkscape:connection-end="#rect2425"
+       inkscape:connection-start-point="d4"
+       inkscape:connection-end-point="d4"
        inkscape:connector-curvature="0" />
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Lstart);marker-end:none"
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Lstart);marker-end:none"
        d="M 583.4375,335 686.5625,225"
        id="path3219"
        inkscape:connector-type="polyline"
        inkscape:connection-start="#rect2423"
        inkscape:connection-end="#rect2419"
+       inkscape:connection-start-point="d4"
+       inkscape:connection-end-point="d4"
        inkscape:connector-curvature="0" />
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:3, 1;stroke-dashoffset:0pt;stroke-opacity:1;marker-start:url(#Arrow1Lstart)"
-       d="m 485,360 -170,0"
-       id="path3221"
-       inkscape:connector-type="polyline"
-       inkscape:connection-start="#rect2423"
-       inkscape:connection-end="#rect2413"
-       inkscape:connector-curvature="0" />
-    <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Lstart);marker-mid:none;marker-end:url(#Arrow1Lend)"
-       d="M 216.5625,335 113.4375,225"
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Lstart);marker-mid:none;marker-end:url(#Arrow1Lend)"
+       d="M 165.61468,335 62.489684,225"
        id="path3223"
        inkscape:connector-type="polyline"
-       inkscape:connection-start="#rect2413"
-       inkscape:connection-end="#rect2417"
        inkscape:connector-curvature="0" />
     <path
-       style="display:inline;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Lstart);marker-end:url(#Arrow1Lend)"
-       d="M 113.4375,175 216.5625,65"
+       style="display:inline;fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Lstart);marker-end:url(#Arrow1Lend)"
+       d="M 61.75,175 164.875,65"
        id="path3225"
        inkscape:connector-type="polyline"
-       inkscape:connection-end="#rect2421"
-       inkscape:connection-start="#rect2417"
        inkscape:connector-curvature="0" />
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:3, 1;stroke-dashoffset:0pt;stroke-opacity:1;marker-start:none;marker-mid:none;marker-end:url(#Arrow1Lend)"
-       d="M 265,65 535,335"
-       id="path3227"
-       inkscape:connector-type="polyline"
-       inkscape:connection-start="#rect2421"
-       inkscape:connection-end="#rect2423"
-       inkscape:connector-curvature="0" />
-    <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:3, 1;stroke-dashoffset:0pt;stroke-opacity:1;marker-start:url(#Arrow1Lstart);marker-mid:none;marker-end:none"
+       style="fill:#ff0000;stroke:#ff0000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:3, 1;stroke-dashoffset:0;stroke-opacity:1;marker-start:url(#Arrow1Lstart);marker-mid:none;marker-end:none"
        d="m 635,200 -470,0"
        id="path3229"
        inkscape:connector-type="polyline"
        inkscape:connection-start="#rect2419"
        inkscape:connection-end="#rect2417"
+       inkscape:connection-start-point="d4"
+       inkscape:connection-end-point="d4"
        inkscape:connector-curvature="0" />
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:3, 1;stroke-dashoffset:0pt;stroke-opacity:1;marker-start:none;marker-end:url(#Arrow1Lend)"
+       style="fill:none;stroke:#ff0000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:3, 1;stroke-dashoffset:0;stroke-opacity:1;marker-start:none;marker-end:url(#Arrow1Lend)"
        d="m 163.4375,225 323.125,110"
        id="path3231"
        inkscape:connector-type="polyline"
        inkscape:connection-start="#rect2417"
        inkscape:connection-end="#rect2423"
+       inkscape:connection-start-point="d4"
+       inkscape:connection-end-point="d4"
        inkscape:connector-curvature="0" />
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:3, 1;stroke-dashoffset:0pt;stroke-opacity:1;marker-start:url(#Arrow1Lstart);marker-end:none"
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:3, 1;stroke-dashoffset:0;stroke-opacity:1;marker-start:url(#Arrow1Lstart);marker-end:none"
        d="M 560,335 560,65"
        id="path3233"
        inkscape:connector-type="polyline"
        inkscape:connection-end="#rect2425"
        inkscape:connection-start="#rect2423"
+       inkscape:connection-start-point="d4"
+       inkscape:connection-end-point="d4"
        inkscape:connector-curvature="0" />
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:3, 1;stroke-dashoffset:0pt;stroke-opacity:1;marker-start:url(#Arrow1Lstart)"
-       d="M 636.5625,225 313.4375,335"
-       id="path3235"
-       inkscape:connector-type="polyline"
-       inkscape:connection-start="#rect2419"
-       inkscape:connection-end="#rect2413"
-       inkscape:connector-curvature="0" />
-    <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:3, 1;stroke-dashoffset:0pt;stroke-opacity:1;marker-start:url(#Arrow1Lstart)"
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:3, 1;stroke-dashoffset:0;stroke-opacity:1;marker-start:url(#Arrow1Lstart)"
        d="M 636.5625,175 313.4375,65"
        id="path3237"
        inkscape:connector-type="polyline"
        inkscape:connection-start="#rect2419"
        inkscape:connection-end="#rect2421"
+       inkscape:connection-start-point="d4"
+       inkscape:connection-end-point="d4"
        inkscape:connector-curvature="0" />
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:3, 1;stroke-dashoffset:0pt;stroke-opacity:1;marker-start:url(#Arrow1Lstart);marker-end:url(#Arrow1Lend)"
-       d="m 240,65 0,270"
-       id="path3239"
-       inkscape:connector-type="polyline"
-       inkscape:connection-start="#rect2421"
-       inkscape:connection-end="#rect2413"
-       inkscape:connector-curvature="0" />
-    <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:3, 1;stroke-dashoffset:0pt;stroke-opacity:1;marker-start:none;marker-end:url(#Arrow1Lend)"
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:3, 1;stroke-dashoffset:0;stroke-opacity:1;marker-start:none;marker-end:url(#Arrow1Lend)"
        d="M 163.4375,175 486.5625,65"
        id="path3241"
        inkscape:connector-type="polyline"
        inkscape:connection-start="#rect2417"
        inkscape:connection-end="#rect2425"
+       inkscape:connection-start-point="d4"
+       inkscape:connection-end-point="d4"
        inkscape:connector-curvature="0" />
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:3, 1;stroke-dashoffset:0pt;stroke-opacity:1;marker-start:none;marker-end:url(#Arrow1Lend)"
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:3, 1;stroke-dashoffset:0;stroke-opacity:1;marker-start:none;marker-end:url(#Arrow1Lend)"
        d="M 265,335 535,65"
        id="path3243"
        inkscape:connector-type="polyline"
        inkscape:connection-start="#rect2413"
        inkscape:connection-end="#rect2425"
+       inkscape:connection-start-point="d4"
+       inkscape:connection-end-point="d4"
        inkscape:connector-curvature="0" />
     <g
        id="g29562"
-       transform="translate(78, 161)">
+       transform="translate(29.283024,161.81195)">
       <rect
          y="-60"
          x="51"
          height="38"
          width="64"
          id="rect29560"
-         style="opacity: 1; fill: rgb(255, 255, 255); fill-opacity: 1; fill-rule: nonzero; stroke: none; stroke-width: 1; stroke-linejoin: miter; stroke-miterlimit: 4; stroke-dasharray: 3, 1; stroke-dashoffset: 0pt; stroke-opacity: 1;" />
+         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none" />
       <text
          id="text29554"
          y="-44"
          x="83"
-         style="font-style:normal;font-weight:normal;font-size:40px;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         style="font-style:normal;font-weight:normal;font-size:40px;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none"
          xml:space="preserve"><tspan
-           style="font-size:12px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-opacity:1"
+           style="font-size:12px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
            id="tspan29558"
            y="-44"
            x="83"
-           sodipodi:role="line">direct</tspan><tspan
-           style="font-size:12px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-opacity:1"
+           sodipodi:role="line">direct verification</tspan><tspan
+           style="font-size:12px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
            y="-29"
            x="83"
            sodipodi:role="line"
-           id="tspan3453">trust</tspan></text>
+           id="tspan3842">(and trust)</tspan></text>
     </g>
     <g
        id="g29568"
-       transform="translate(78, 320)">
+       transform="translate(19.332017,320.70684)">
       <rect
          y="-60"
          x="51"
          height="38"
          width="64"
          id="rect29570"
-         style="opacity: 1; fill: rgb(255, 255, 255); fill-opacity: 1; fill-rule: nonzero; stroke: none; stroke-width: 1; stroke-linejoin: miter; stroke-miterlimit: 4; stroke-dasharray: 3, 1; stroke-dashoffset: 0pt; stroke-opacity: 1;" />
+         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none" />
       <text
          id="text29572"
          y="-44"
          x="83"
-         style="font-style:normal;font-weight:normal;font-size:40px;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         style="font-style:normal;font-weight:normal;font-size:40px;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none"
          xml:space="preserve"><tspan
-           style="font-size:12px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-opacity:1"
+           style="font-size:12px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
            id="tspan29576"
            y="-44"
            x="83"
-           sodipodi:role="line">direct</tspan><tspan
-           style="font-size:12px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-opacity:1"
+           sodipodi:role="line">direct verification</tspan><tspan
+           style="font-size:12px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
            y="-29"
            x="83"
            sodipodi:role="line"
-           id="tspan3457">Trust</tspan></text>
+           id="tspan3854">(and trust)</tspan></text>
     </g>
     <g
-       id="g29675">
+       id="g3992"
+       transform="translate(485.54586,27.606285)">
       <rect
-         y="192.18124"
-         x="340"
-         height="13.625"
-         width="124"
+         y="165.69321"
+         x="-219.60048"
+         height="15.724749"
+         width="102.64108"
          id="rect29596"
-         style="fill: rgb(255, 255, 255); fill-opacity: 1; fill-rule: nonzero; stroke: none; stroke-width: 1; stroke-linejoin: miter; stroke-miterlimit: 4; stroke-dasharray: 3, 1; stroke-dashoffset: 0pt; stroke-opacity: 1;" />
+         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none" />
       <text
          id="text29598"
-         y="202.994"
-         x="401"
-         style="font-style:normal;font-weight:normal;font-size:40px;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         y="176.83498"
+         x="-168.10759"
+         style="font-style:normal;font-weight:normal;font-size:40px;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none"
          xml:space="preserve"><tspan
-           style="font-size:12px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-opacity:1"
-           id="tspan29602"
-           y="202.994"
-           x="401"
-           sodipodi:role="line">indirect trust</tspan></text>
+           style="font-size:12px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
+           y="176.83498"
+           x="-168.10759"
+           sodipodi:role="line"
+           id="tspan3119">no verification</tspan></text>
     </g>
     <g
-       transform="translate(318, 142)"
-       id="g29604">
+       id="g3957"
+       transform="translate(623.59859,27.117556)">
       <rect
-         y="-59.40625"
-         x="52"
-         height="36.8125"
-         width="62"
+         y="52.906334"
+         x="-282.41629"
+         height="31.157753"
+         width="117.13377"
          id="rect29606"
-         style="opacity: 1; fill: rgb(255, 255, 255); fill-opacity: 1; fill-rule: nonzero; stroke: none; stroke-width: 1; stroke-linejoin: miter; stroke-miterlimit: 4; stroke-dasharray: 3, 1; stroke-dashoffset: 0pt; stroke-opacity: 1;" />
+         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none" />
       <text
          id="text29608"
-         y="-44"
-         x="83"
-         style="font-style:normal;font-weight:normal;font-size:40px;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         y="64.071526"
+         x="-223.84937"
+         style="font-style:normal;font-weight:normal;font-size:40px;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none"
          xml:space="preserve"><tspan
-           style="font-size:12px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-opacity:1"
+           style="font-size:12px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
            id="tspan29612"
-           y="-44"
-           x="83"
-           sodipodi:role="line">indirect</tspan><tspan
-           style="font-size:12px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-opacity:1"
-           y="-29"
-           x="83"
+           y="64.071526"
+           x="-223.84937"
+           sodipodi:role="line">indirect verification</tspan><tspan
+           style="font-size:12px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
+           y="79.071526"
+           x="-223.84937"
            sodipodi:role="line"
-           id="tspan3469">trust</tspan></text>
+           id="tspan3866">(no trust)</tspan></text>
     </g>
     <g
-       transform="translate(318, 339)"
-       id="g29614">
-      <rect
-         y="-59.40625"
-         x="52"
-         height="36.8125"
-         width="62"
-         id="rect29616"
-         style="opacity: 1; fill: rgb(255, 255, 255); fill-opacity: 1; fill-rule: nonzero; stroke: none; stroke-width: 1; stroke-linejoin: miter; stroke-miterlimit: 4; stroke-dasharray: 3, 1; stroke-dashoffset: 0pt; stroke-opacity: 1;" />
-      <text
-         id="text29618"
-         y="-44"
-         x="83"
-         style="font-style:normal;font-weight:normal;font-size:40px;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-         xml:space="preserve"><tspan
-           style="font-size:12px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-opacity:1"
-           id="tspan29622"
-           y="-44"
-           x="83"
-           sodipodi:role="line">indirect</tspan><tspan
-           style="font-size:12px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-opacity:1"
-           y="-29"
-           x="83"
-           sodipodi:role="line"
-           id="tspan3473">trust</tspan></text>
-    </g>
+       transform="translate(318,339)"
+       id="g29614" />
     <g
-       transform="translate(477, 239.594)"
+       transform="translate(477,277.594)"
        id="g29624">
       <rect
          y="-59.40625"
@@ -418,50 +377,23 @@
          height="36.8125"
          width="62"
          id="rect29626"
-         style="opacity: 1; fill: rgb(255, 255, 255); fill-opacity: 1; fill-rule: nonzero; stroke: none; stroke-width: 1; stroke-linejoin: miter; stroke-miterlimit: 4; stroke-dasharray: 3, 1; stroke-dashoffset: 0pt; stroke-opacity: 1;" />
+         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none" />
       <text
          id="text29628"
          y="-44"
          x="83"
-         style="font-style:normal;font-weight:normal;font-size:40px;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         style="font-style:normal;font-weight:normal;font-size:40px;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none"
          xml:space="preserve"><tspan
-           style="font-size:12px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-opacity:1"
+           style="font-size:12px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
            id="tspan29632"
            y="-44"
            x="83"
-           sodipodi:role="line">indirect</tspan><tspan
-           style="font-size:12px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-opacity:1"
+           sodipodi:role="line">indirect verification</tspan><tspan
+           style="font-size:12px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
            y="-29"
            x="83"
            sodipodi:role="line"
-           id="tspan3485">trust</tspan></text>
-    </g>
-    <g
-       transform="translate(157, 239.594)"
-       id="g29659">
-      <rect
-         y="-59.40625"
-         x="52"
-         height="36.8125"
-         width="62"
-         id="rect29661"
-         style="opacity: 1; fill: rgb(255, 255, 255); fill-opacity: 1; fill-rule: nonzero; stroke: none; stroke-width: 1; stroke-linejoin: miter; stroke-miterlimit: 4; stroke-dasharray: 3, 1; stroke-dashoffset: 0pt; stroke-opacity: 1;" />
-      <text
-         id="text29663"
-         y="-44"
-         x="83"
-         style="font-style:normal;font-weight:normal;font-size:40px;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-         xml:space="preserve"><tspan
-           style="font-size:12px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-opacity:1"
-           id="tspan29667"
-           y="-44"
-           x="83"
-           sodipodi:role="line">indirect</tspan><tspan
-           style="font-size:12px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-opacity:1"
-           y="-29"
-           x="83"
-           sodipodi:role="line"
-           id="tspan3461">trust</tspan></text>
+           id="tspan3874">(no trust)</tspan></text>
     </g>
     <g
        id="g29700"
@@ -478,7 +410,7 @@
            y="-60" />
         <text
            xml:space="preserve"
-           style="font-style:normal;font-weight:normal;font-size:40px;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           style="font-style:normal;font-weight:normal;font-size:40px;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none"
            x="83"
            y="-44"
            id="text29684"><tspan
@@ -486,12 +418,12 @@
              x="83"
              y="-44"
              id="tspan29688"
-             style="font-size:12px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-opacity:1">direct</tspan><tspan
+             style="font-size:12px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none">direct verification</tspan><tspan
              sodipodi:role="line"
              x="83"
              y="-29"
-             style="font-size:12px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-opacity:1"
-             id="tspan3489">trust</tspan></text>
+             style="font-size:12px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
+             id="tspan3850">(and trust)</tspan></text>
       </g>
       <g
          transform="translate(102, 421.5)"
@@ -505,7 +437,7 @@
            y="-60" />
         <text
            xml:space="preserve"
-           style="font-style:normal;font-weight:normal;font-size:40px;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           style="font-style:normal;font-weight:normal;font-size:40px;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none"
            x="83"
            y="-44"
            id="text29694"><tspan
@@ -513,88 +445,61 @@
              x="83"
              y="-44"
              id="tspan29698"
-             style="font-size:12px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-opacity:1">direct</tspan><tspan
+             style="font-size:12px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none">direct verification</tspan><tspan
              sodipodi:role="line"
              x="83"
              y="-29"
-             style="font-size:12px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-opacity:1"
-             id="tspan3481">trust</tspan></text>
+             style="font-size:12px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
+             id="tspan3878">(trust irrelevant)</tspan></text>
       </g>
     </g>
     <g
-       id="g29712"
-       transform="translate(319, 80)">
+       id="g3915"
+       transform="translate(629.79727,-16.98057)">
       <rect
-         y="-60"
-         x="51"
-         height="38"
-         width="64"
+         y="53.586315"
+         x="-282.82736"
+         height="28.104195"
+         width="104.29006"
          id="rect29714"
-         style="opacity: 1; fill: rgb(255, 255, 255); fill-opacity: 1; fill-rule: nonzero; stroke: none; stroke-width: 1; stroke-linejoin: miter; stroke-miterlimit: 4; stroke-dasharray: 3, 1; stroke-dashoffset: 0pt; stroke-opacity: 1;" />
+         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none" />
       <text
          id="text29716"
-         y="-44"
-         x="83"
-         style="font-style:normal;font-weight:normal;font-size:40px;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         y="63"
+         x="-230.70685"
+         style="font-style:normal;font-weight:normal;font-size:40px;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none"
          xml:space="preserve"><tspan
-           style="font-size:12px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-opacity:1"
+           style="font-size:12px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
            id="tspan29720"
-           y="-44"
-           x="83"
-           sodipodi:role="line">direct</tspan><tspan
-           style="font-size:12px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-opacity:1"
-           y="-29"
-           x="83"
+           y="63"
+           x="-230.70685"
+           sodipodi:role="line">direct verification</tspan><tspan
+           style="font-size:12px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
+           y="78"
+           x="-230.70685"
            sodipodi:role="line"
-           id="tspan3465">trust</tspan></text>
-    </g>
-    <g
-       transform="translate(318, 399)"
-       id="g29722">
-      <rect
-         y="-59.40625"
-         x="52"
-         height="36.8125"
-         width="62"
-         id="rect29724"
-         style="opacity: 1; fill: rgb(255, 255, 255); fill-opacity: 1; fill-rule: nonzero; stroke: none; stroke-width: 1; stroke-linejoin: miter; stroke-miterlimit: 4; stroke-dasharray: 3, 1; stroke-dashoffset: 0pt; stroke-opacity: 1;" />
-      <text
-         id="text29726"
-         y="-44"
-         x="83"
-         style="font-style:normal;font-weight:normal;font-size:40px;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-         xml:space="preserve"><tspan
-           style="font-size:12px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-opacity:1"
-           id="tspan29730"
-           y="-44"
-           x="83"
-           sodipodi:role="line">indirect</tspan><tspan
-           style="font-size:12px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-opacity:1"
-           y="-29"
-           x="83"
-           sodipodi:role="line"
-           id="tspan3477">trust</tspan></text>
+           id="tspan3846">(and trust)</tspan></text>
     </g>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:39.99990082px;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-style:normal;font-weight:normal;font-size:39.99990082px;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none"
        x="26.000099"
        y="194.80099"
        id="text29734"
        transform="scale(0.999998,1)"><tspan
          sodipodi:role="line"
-         id="tspan29736"
          x="26.000099"
          y="194.80099"
+         id="tspan29738"
          style="font-size:14px">Frettchen</tspan><tspan
          sodipodi:role="line"
          x="26.000099"
          y="212.30099"
-         id="tspan29738"
-         style="font-size:14px">(me)</tspan></text>
+         style="font-size:14px"
+         id="tspan3834">(me)</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:39.99990082px;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-style:normal;font-weight:normal;font-size:39.99990082px;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none"
        x="173.46201"
        y="35.253799"
        id="text29740"
@@ -611,24 +516,24 @@
          style="font-size:14px">(friend)</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:39.99990082px;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-style:normal;font-weight:normal;font-size:39.99990082px;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none"
        x="173.46201"
        y="355.25299"
        id="text29746"
        transform="scale(0.999998,1)"><tspan
          sodipodi:role="line"
-         id="tspan29748"
          x="173.46201"
          y="355.25299"
+         id="tspan29750"
          style="font-size:14px">John</tspan><tspan
          sodipodi:role="line"
          x="173.46201"
          y="372.75299"
-         id="tspan29750"
-         style="font-size:14px">(friend)</tspan></text>
+         style="font-size:14px"
+         id="tspan3838">(friend)</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:39.99990082px;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-style:normal;font-weight:normal;font-size:39.99990082px;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none"
        x="494.68399"
        y="35.2537"
        id="text29752"
@@ -645,7 +550,7 @@
          style="font-size:14px">(stranger)</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:39.99990082px;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-style:normal;font-weight:normal;font-size:39.99990082px;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none"
        x="643.29602"
        y="194.80099"
        id="text29758"
@@ -662,7 +567,7 @@
          style="font-size:14px">(stranger)</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:39.99990082px;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-style:normal;font-weight:normal;font-size:39.99990082px;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none"
        x="495.13501"
        y="355.25299"
        id="text29764"
@@ -782,6 +687,88 @@
              style="stroke: rgb(0, 0, 0);" />
         </g>
       </g>
+    </g>
+    <path
+       inkscape:connector-curvature="0"
+       inkscape:connector-type="polyline"
+       id="path3931"
+       d="m 246.16163,64.29316 0,270"
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:3, 1;stroke-dashoffset:0;stroke-opacity:1;marker-start:url(#Arrow1Lstart);marker-end:none" />
+    <g
+       id="g3947"
+       transform="translate(470.64947,45.306373)">
+      <rect
+         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="rect3935"
+         width="117.01324"
+         height="29.517881"
+         x="-283.08957"
+         y="52.934658" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:40px;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none"
+         x="-224.22954"
+         y="63.279915"
+         id="text3937"><tspan
+           sodipodi:role="line"
+           x="-224.22954"
+           y="63.279915"
+           id="tspan3941"
+           style="font-size:12px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none">indirect verification</tspan><tspan
+           sodipodi:role="line"
+           x="-224.22954"
+           y="78.279915"
+           style="font-size:12px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
+           id="tspan3862">(and trust)</tspan></text>
+    </g>
+    <g
+       transform="translate(597.91053,187.88098)"
+       id="g3978">
+      <rect
+         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="rect3980"
+         width="117.13377"
+         height="31.157753"
+         x="-282.41629"
+         y="52.906334" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:40px;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none"
+         x="-223.84937"
+         y="64.071526"
+         id="text3982"><tspan
+           sodipodi:role="line"
+           x="-223.84937"
+           y="64.071526"
+           id="tspan3986"
+           style="font-size:12px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none">indirect verification</tspan><tspan
+           sodipodi:role="line"
+           x="-223.84937"
+           y="79.071526"
+           style="font-size:12px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
+           id="tspan3870">(no trust)</tspan></text>
+    </g>
+    <g
+       transform="translate(561.05718,128.28804)"
+       id="g3998">
+      <rect
+         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="rect4000"
+         width="102.64108"
+         height="15.724749"
+         x="-219.60048"
+         y="165.69321" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:40px;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none"
+         x="-168.10759"
+         y="176.83498"
+         id="text4002"><tspan
+           id="tspan4006"
+           sodipodi:role="line"
+           x="-168.10759"
+           y="176.83498"
+           style="font-size:12px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none">no verification</tspan></text>
     </g>
   </g>
 </svg>
