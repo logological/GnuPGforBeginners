@@ -47,6 +47,7 @@ size=20pt,
     \item Encrypting and decrypting documents
     \item Generating and verifying digital signatures
     \item GnuPG trust model
+    \item Front ends
     \end{itemize}
   \end{itemize}
 \end{slide}
@@ -56,16 +57,16 @@ size=20pt,
 %=============================================================================
 \begin{slide}{Symmetric ciphers}
   \begin{itemize}
-  \item A symmetric cipher is a cipher that uses the same key for both
-    encryption and decryption.
+  \item A \textbf{symmetric cipher} uses the same key for encryption
+    and decryption.
   \item Two parties communicating using a symmetric cipher must agree
     on the key beforehand.
-  \item Once they agree, the sender encrypts a message using the key,
+  \item The sender encrypts a message using the key,
     sends it to the receiver, and the receiver decrypts the message
     using the key.
   \item Examples: ROT13, AES, 3DES, Blowfish.
-  \item Advantage: hard to crack, provided the key is big enough (128~bits is
-    standard).
+  \item Advantage: hard to crack, provided the key is big enough
+    (128~bits is standard).
   \item Disadvantage: How to securely communicate the key?
   \end{itemize}
 \end{slide}
@@ -76,7 +77,7 @@ size=20pt,
 
 \begin{slide}{Public-key ciphers}
   \begin{itemize}
-  \item Uses a pair of keys:
+  \item \textbf{Public-key} ciphers use a pair of keys:
     \begin{itemize}
     \item The \textbf{public key} is given to anyone who wishes to
       communicate and is used to encrypt a message.
@@ -86,8 +87,8 @@ size=20pt,
   \item Advantage: simplified key exchange.
   \item Disadvantage: easier to crack, so key sizes must be much
     larger ($\geq$2048~bits is standard).
-  \item \textbf{Hybrid ciphers} combine elements of both symmetric
-    and public-key encryption.
+  \item \textbf{Hybrid ciphers} combine elements of both symmetric and
+    public-key encryption.
   \end{itemize}
 \end{slide}
 
@@ -101,8 +102,8 @@ size=20pt,
 
 \begin{slide}{Digital signatures}
   \begin{itemize}
-  \item A document's digital signature is the result of applying a
-    one-way hash function to the document.
+  \item A document's \textbf{digital signature} is the result of
+    applying a one-way hash function to the document.
   \item The hash is then encrypted using the signer's \textbf{private
       key}.
   \item To verify the signature, the recipient decrypts the hash using
@@ -125,8 +126,8 @@ size=20pt,
     key and then republish it.
   \item However, it would be awkward for you to have to personally
     verify and sign every single public key you encounter.
-  \item GnuPG addresses this problem with a mechanism popularly known
-    as the \textbf{web of trust}.
+  \item OpenPGP addresses this problem with a mechanism
+    known as the \textbf{web of trust}.
   \item In the web of trust model, responsibility for validating
     public keys is delegated to people you trust.
   \end{itemize}
@@ -163,7 +164,7 @@ size=20pt,
 \end{slide}
 
 \begin{slide}{Encrypting e-mail}
-  Encrypting e-mail containing proposals, results, and publication
+  Encrypting e-mails containing proposals, results, and publication
   drafts reduces the following risks:\\[1ex]
   \begin{itemize}
   \item sensitive communications intercepted by or leaked to press
@@ -177,7 +178,7 @@ size=20pt,
 
 \begin{slide}{Protecting personal data}
   GnuPG's symmetric-key encryption can be used to protect sensitive
-  documents stored on your computer.  For instance:\\[1ex]
+  documents stored on your own (or remote) computers.  For instance:\\[1ex]
   \begin{itemize}
   \item experiment results
   \item personal data on experiment volunteers
@@ -193,10 +194,10 @@ size=20pt,
 
 \begin{slide}{GnuPG \vs PGP \vs OpenPGP}
   \begin{itemize}
-  \item PGP was first developed and freely released by Phil Zimmerman
+  \item \textbf{PGP}: first developed and freely released by Phil Zimmerman
   \item PGP later commercialized; now a proprietary system
-  \item encryption method standardized as OpenPGP
-  \item GnuPG is GNU's free implementation of the OpenPGP standard
+  \item encryption method standardized as \textbf{OpenPGP}
+  \item \textbf{GnuPG} is GNU's free implementation of the OpenPGP standard
   \item other implementations of OpenPGP exist, but GnuPG is free and
     popular
   \end{itemize}
@@ -204,8 +205,8 @@ size=20pt,
 
 \begin{slide}{Installing GnuPG}
   \begin{itemize}
-  \item download from \url{https://gnupg.org/} or from your OS's package manager
-  \item compile from source or fetch a binary package for a supported
+  \item Download from \url{https://gnupg.org/} or from your OS's package manager.
+  \item Compile from source or fetch a binary package for a supported
     system:
     \begin{itemize}
     \item GNU/Linux
@@ -214,7 +215,7 @@ size=20pt,
     \item Microsoft Windows
     \end{itemize}
   \item Third-party GUIs are available, but an understanding of the underlying
-    command-line version is helpful
+    command-line version is helpful.
   \end{itemize}
 \end{slide}
 
@@ -262,7 +263,7 @@ What keysize do you want? (2048)
 \begin{slide}[method=direct,toc=]{Generating a new keypair}
   \begin{itemize}
   \item Next, you must choose an expiration date.
-  \item For most users a key that does not expire is adequate.
+  \item For most users, a key that does not expire is adequate.
   \item Some people prefer to set an expiry date (say, two years) as a
     safeguard. You can periodically extend the expiry date if your key
     is still in use.
@@ -287,6 +288,7 @@ Key is valid for? (0)
     edited after it is created!
   \item Avoid using the ``Comment'' field without good reason.
   \end{itemize}
+\vsp
 \begin{verbatim}
 GnuPG needs to construct a user ID to identify your key.
 
@@ -303,8 +305,10 @@ Change (N)ame, (C)omment, (E)mail or (O)kay/(Q)uit?
 
 \begin{slide}[method=direct,toc=]{Generating a new keypair}
   \begin{itemize}
-  \item Finally, you must enter a passphrase to protect your private key.
+  \item Finally, you must enter a \textbf{passphrase} to protect your
+    private key.
   \end{itemize}
+\vsp
 \begin{verbatim}
 You need a Passphrase to protect your secret key.    
 
@@ -341,7 +345,10 @@ sub   2048R/FA659AB0 2016-08-15
 pub  1024D/EFBF4915 2003-10-24 Tristan Miller (Research scientist) <tristan.miller@dfki.de>
 uid                            Tristan Miller <psychonaut@nothingisreal.com>
 sub  1024g/B40BE860 2003-10-24
-\end{verbatim}%$
+\end{verbatim}
+\end{slide}
+
+\begin{slide}[method=direct,toc=]{Your public keyring}
   \begin{itemize}
   \item Most command-line arguments dealing with keys let you specify
     a particular key or set of keys.  You can use the key's ID or any
@@ -432,7 +439,7 @@ sub   2048R/4D993DDE 2016-08-15
 
 \begin{slide}{Validating a key}
   \begin{itemize}
-  \item Once a key is imported, it should be validated.
+  \item Once a key is imported, it should be \textbf{validated}.
   \item Sometimes a key may be automatically validated by virtue of a
     chain of trust.
   \item You may need to personally validate some keys.  This entails
@@ -447,7 +454,7 @@ sub   2048R/4D993DDE 2016-08-15
 %\makeatletter\renewcommand{\verbatim@font}{\tiny\tt}\makeatother
 \begin{slide}[method=direct]{Verifying a key}
   \begin{itemize}
-  \item A key's fingerprint is verified with the key's owner.
+  \item A key's \textbf{fingerprint} is verified with the key's owner.
   \item This may be done in person or over the phone or through any
     other means as long as you can \emph{guarantee} that you are
     communicating with the key's true owner.
@@ -457,9 +464,8 @@ sub   2048R/4D993DDE 2016-08-15
   \item Use the \clopt{-fingerprint} option to retrieve a key's
     fingerprint.
   \end{itemize}
-
+\vsp
 \begin{verbatim}
-
 $ gpg --fingerprint Smith
 pub   2048R/65B46947 2016-08-15
       Key fingerprint = 42A4 5686 FFC8 B7B1 0FCF  F3BD 397F 0C60 65B4 6947
@@ -468,17 +474,17 @@ sub   2048R/4D993DDE 2016-08-15
 \end{verbatim}
 \end{slide}
 
-%\makeatletter\renewcommand{\verbatim@font}{\tiny\tt}\makeatother
 \begin{slide}[method=direct]{Signing a key}
   \begin{itemize}
   \item After checking the fingerprint, you may \textbf{sign} the key
     to validate it.
   \item Ideally you should also tell GnuPG how carefully you have
-    verified that they key you are signing really belongs to who you
+    checked that they key you are signing really belongs to who you
     think it does.
   \end{itemize}
 \end{slide}
 
+\makeatletter\renewcommand{\verbatim@font}{\scriptsize\tt}\makeatother
 \begin{slide}[method=direct,toc=]{Signing a key}
 \begin{verbatim}
 $ gpg --sign-key --ask-cert-level Smith
@@ -550,6 +556,7 @@ sig!         65B46947 2016-08-15  John Smith <smith@example.com>
   \end{itemize}
 \end{slide}
 
+\makeatletter\renewcommand{\verbatim@font}{\footnotesize\tt}\makeatother
 \begin{slide}[method=direct,toc=]{Public key servers}
   \begin{itemize}
   \item You can send and receive keys to/from keyservers with the
@@ -575,7 +582,8 @@ gpg:              unchanged: 1
 %\makeatletter\renewcommand{\verbatim@font}{\scriptsize\tt}\makeatother
 \begin{slide}[method=direct]{Encrypting a document}
   \begin{itemize}
-  \item To encrypt a document the option \clopt{-encrypt} is used.
+  \item To \textbf{encrypt} a document the option \clopt{-encrypt} is
+    used.
   \item You must have the public keys of the intended recipients, whom
     you specify with the \clopt{-recipient} option.
   \item GnuPG expects the name of the document to encrypt as input; if
@@ -583,9 +591,10 @@ gpg:              unchanged: 1
   \item The encrypted result is placed on standard output or as
     specified using the option \clopt{-output}.
   \item The document is automatically compressed before encryption.
-  \item Remember to include yourself as a recipient if you want to be
-    able to decrypt and view the document!
+  \item Remember to include \emph{yourself} as a recipient if you want
+    to be able to decrypt and view the document!
   \end{itemize}
+\vsp
 \begin{verbatim}
 $ gpg --output doc.gpg --encrypt --recipient Smith
 \end{verbatim}
@@ -593,7 +602,7 @@ $ gpg --output doc.gpg --encrypt --recipient Smith
 
 \begin{slide}[method=direct]{Decrypting a document}
   \begin{itemize}
-  \item To decrypt a message the option \clopt{-decrypt} is used.
+  \item To \textbf{decrypt} a message the option \clopt{-decrypt} is used.
   \item You need the private key to which the message was encrypted.
   \item The document to decrypt is input, and the decrypted result is
     output.
@@ -607,8 +616,8 @@ $ gpg --output doc.txt --decrypt doc.gpg
   \begin{itemize}
   \item Documents may also be encrypted with a symmetric cipher
     instead of public-key cryptography.
-  \item The symmetric cipher offers higher security, but should only
-    be used when the passphrase does not need to be communicated to
+  \item The symmetric cipher offers higher security, but should be
+    used only when the passphrase does not need to be communicated to
     others.
   \item Documents can be encrypted with the \clopt{-symmetric} option
     and decrypted as usual with \clopt{-decrypt}.
@@ -646,9 +655,10 @@ Enter passphrase:
   \begin{itemize}
   \item The option \clopt{-clearsign} causes a text document to be
     wrapped in an ASCII-armored signature.
-  \item Clearsigning is used most often for e-mail messages and Usenet
-    postings.
+  % \item Clearsigning is used most often for e-mail messages and Usenet
+  %   postings.
   \end{itemize}
+\vsp
 \begin{verbatim}
 $ echo "Hello, world\!" >hello.txt
 $ gpg --clearsign hello.txt
@@ -676,6 +686,7 @@ WukuStzm7sJLjHl9ootfuxCvOrshmuZVNjxoAhLW1UdPR/b8Wu8gaFmOfSURcTY=
 \end{verbatim}
 \end{slide}
 
+\makeatletter\renewcommand{\verbatim@font}{\footnotesize\tt}\makeatother
 \begin{slide}[method=direct]{Detached signatures}
   \begin{itemize}
   \item Clearsigned documents have two limitations:
@@ -725,10 +736,7 @@ gpg: Good signature from "Frettchen Rättchen <frettchen@dfki.de>" [ultimate]
     each public key on your keyring an indication of how much you
     trust the key's owner:
     \begin{itemize}
-    \item unknown
-    \item none
-    \item marginal
-    \item full
+    \item unknown, none, marginal, full, ultimate
     \end{itemize}
   \item A key's trust level is something that you alone assign to the
     key, and it is considered private information.
@@ -737,13 +745,12 @@ gpg: Good signature from "Frettchen Rättchen <frettchen@dfki.de>" [ultimate]
   \end{itemize}
 \end{slide}
 
+\makeatletter\renewcommand{\verbatim@font}{\scriptsize\tt}\makeatother
 \begin{slide}[method=direct]{Assigning trust}
+\vspace{-10mm}
 \begin{verbatim}
 $ gpg --edit-key John
-gpg (GnuPG) 2.0.24; Copyright (C) 2013 Free Software Foundation, Inc.
-This is free software: you are free to change and redistribute it.
-There is NO WARRANTY, to the extent permitted by law.
-
+...
 
 pub  2048R/65B46947  created: 2016-08-15  expires: never       usage: SC  
                      trust: unknown       validity: full
@@ -772,8 +779,8 @@ Your decision?
 
 \begin{slide}{Using trust to validate keys}
   \begin{itemize}
-  \item Formerly, a key was considered valid only if you verified and signed it
-    personally.
+  \item Formerly, a key was considered valid only if you signed it
+    personally (after verifying it).
   \item Now we have a revised model.  A key $K$ is considered valid if
     it meets two conditions:
     \begin{enumerate}
@@ -802,7 +809,7 @@ Your decision?
   list, edit, import, export, and sign the keys on your keyring.
   \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\textwidth]{kgpg1}
+    \includegraphics[width=0.75\textwidth]{images/kgpg1.eps}
     \label{fig:kgpg1}
   \end{figure}
 \end{slide}
@@ -812,7 +819,7 @@ Your decision?
   account, you can associate a public key for signing and encryption.
   \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\textwidth]{kmail_conf}
+    \includegraphics[width=0.6\textwidth]{images/kmail_conf.eps}
     \label{fig:kmail_conf}
   \end{figure}
 \end{slide}
@@ -821,7 +828,7 @@ Your decision?
   Signatures on messages are automatically checked.
   \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\textwidth]{kmail_recvd}
+    \includegraphics[width=0.6\textwidth]{images/kmail_recvd.eps}
     \label{fig:kmail_recvd}
   \end{figure}
 \end{slide}
@@ -831,26 +838,28 @@ Your decision?
   encrypting the message.
   \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\textwidth]{kmail_send}
+    \includegraphics[width=0.7\textwidth]{images/kmail_send.eps}
     \label{fig:kmail_send}
   \end{figure}
 \end{slide}
 
-\begin{slide}[toc=]{Thank you!}
+\begin{slide}[toc=]{}
 \centering
 
 \vfill
 
-Thank you!
+{\huge \textbf{Thank you!}}
 
 \vfill
+
+\mbox{}
 \end{slide}
 
 \begin{slide}[toc=]{Image credits}
 
   \begin{itemize}
-  \item \href{https://commons.wikimedia.org/wiki/File:Web_of_Trust.svg}{Web of Trust} \copyright\,2009 Ogmios. CC-BY-SA 3.0.
-  \item \href{https://commons.wikimedia.org/wiki/Category:Orange_blue_cryptography_diagrams}{Orange blue cryptography diagrams} by Bananenfalter. CC0 1.0.
+  \item \href{https://commons.wikimedia.org/wiki/File:Web_of_Trust.svg}{Web of Trust} \copyright\,2009 Ogmios. CC-BY-SA~3.0.
+  \item \href{https://commons.wikimedia.org/wiki/Category:Orange_blue_cryptography_diagrams}{Orange blue cryptography diagrams} by Bananenfalter. CC0~1.0.
   \end{itemize}
 
 \end{slide}
