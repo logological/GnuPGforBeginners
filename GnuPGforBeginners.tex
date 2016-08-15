@@ -1,6 +1,7 @@
 \documentclass[%
 mode=present,%
-paper=screen% smartboard
+paper=smartboard,
+size=20pt,
 ]{powerdot}
 \usepackage{latabbr}
 \usepackage{verbatim}
@@ -15,13 +16,14 @@ paper=screen% smartboard
 %\subtitle{The GNU Privacy Guard}
 \author{%
   Tristan Miller\\
-  UKP Lab, Department of Computer Science\\
+  Ubiquitous Knowledge Processing Lab\\
+  Department of Computer Science\\
   Technische Universit\"at Darmstadt
 }
+\date{August 16, 2016}
 \pdsetup{
-  rf={GnuPG for Beginners},
-  lf={UKP Lab, Technische Universit\"at Darmstadt},
-%  palette={red},
+  lf={GnuPG for Beginners},
+  palette={blue},
 }
 
 \begin{document}
@@ -39,11 +41,15 @@ paper=screen% smartboard
   \item Once they agree, the sender encrypts a message using the key,
     sends it to the receiver, and the receiver decrypts the message
     using the key.
-  \item Examples: ROT13, 3DES, Blowfish, IDEA.
-  \item Advantage: hard to crack, provided the key is big enough (128 bits is
+  \item Examples: ROT13, AES, 3DES, Blowfish.
+  \item Advantage: hard to crack, provided the key is big enough (128~bits is
     standard).
   \item Disadvantage: How to securely communicate the key?
   \end{itemize}
+\end{slide}
+
+\begin{slide}[toc=]{Symmetric ciphers}
+\centering\includegraphics[width=0.9\linewidth]{images/Orange_blue_symmetric_cryptography_en}
 \end{slide}
 
 \begin{slide}{Public-key ciphers}
@@ -57,10 +63,18 @@ paper=screen% smartboard
     \end{itemize}
   \item Advantage: simplified key exchange.
   \item Disadvantage: easier to crack, so key sizes must be much
-    larger (1024 bits is standard).
+    larger ($\geq$2048~bits is standard).
   \item \textbf{Hybrid ciphers} combine elements of both symmetric
     and public-key encryption.
   \end{itemize}
+\end{slide}
+
+\begin{slide}[toc=]{Public-key ciphers}
+\centering\includegraphics[width=0.35\linewidth]{images/Orange_blue_public_private_keygeneration_en.eps}
+\end{slide}
+
+\begin{slide}[toc=]{Public-key ciphers}
+\centering\includegraphics[width=0.9\linewidth]{images/Orange_blue_public_key_cryptography_en.eps}
 \end{slide}
 
 \begin{slide}{Digital signatures}
@@ -78,6 +92,10 @@ paper=screen% smartboard
   \end{itemize}
 \end{slide}
 
+\begin{slide}[toc=]{Digital signatures}
+\centering\includegraphics[width=0.9\linewidth]{images/Orange_blue_digital_signature_en.eps}
+\end{slide}
+
 \begin{slide}{Web of trust}
   \begin{itemize}
   \item When you have faith that a certain public key belongs to a
@@ -93,7 +111,7 @@ paper=screen% smartboard
 \end{slide}
 
 %=============================================================================
-\section{Why use GnuPG at DFKI?}
+\section{Why use GnuPG at UKP?}
 %=============================================================================
 \begin{slide}{Software distribution}
   If you distribute software on the Internet, there are many reasons
@@ -144,10 +162,6 @@ paper=screen% smartboard
   \end{itemize}
 \end{slide}
 
-
-%=============================================================================
-%\sectionandpart{Using GnuPG}
-%=============================================================================
 
 %=============================================================================
 \section{Acquiring the software}
@@ -742,9 +756,30 @@ Your decision?
   \end{figure}
 \end{slide}
 
+\begin{slide}[toc=]{Thank you!}
+\centering
+
+\vfill
+
+Thank you!
+
+\vfill
+\end{slide}
+
+\begin{slide}[toc=]{Image credits}
+
+  \begin{itemize}
+  \item \href{https://commons.wikimedia.org/wiki/File:Web_of_Trust.svg}{Web of Trust} \copyright\,2009 Ogmios. CC-BY-SA 3.0.
+  \item \href{https://commons.wikimedia.org/wiki/Category:Orange_blue_cryptography_diagrams}{Orange blue cryptography diagrams} by Bananenfalter. CC0 1.0.
+  \end{itemize}
+
+\end{slide}
+
 \end{document}
 
 %%% Local Variables: 
 %%% mode: latex
+%%% TeX-PDF-mode: t
+%%% TeX-PDF-via-dvips-ps2pdf: t
 %%% TeX-master: t
 %%% End: 
