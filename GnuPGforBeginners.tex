@@ -795,9 +795,24 @@ Your decision?
 \section{Further topics}
 %=============================================================================
 
+\begin{slide}{Conveniences}
+  \begin{itemize}
+  \item You can use a local configuration file
+    (\texttt{\textasciitilde /.gnupg/gpg.conf}) to set your default
+    key, preferred key server, \etc
+  \item You can use \texttt{gpg-agent}, a daemon that securely caches
+    your keys in memory. This way you don't need to type your
+    passphrase every time you want to use your key.
+  \item \texttt{pinentry} is a collection of programs that will prompt
+    for your passphrase using your desktop environment's standard
+    dialogs rather than on the terminal.
+  \end{itemize}
+\end{slide}
+
 \begin{slide}{GUIs}
-  There are a number of key management tools which let you generate,
-  list, edit, import, export, and sign the keys on your keyring.
+  There are also a number of full-fledged key management tools which
+  let you generate, list, edit, import, export, sign, and publish the
+  keys on your keyring.
   \begin{figure}[H]
     \centering
     \includegraphics[width=0.75\textwidth]{images/kgpg1.eps}
@@ -807,8 +822,8 @@ Your decision?
 
 \begin{slide}{E-mail integration}
   Many e-mail clients support GnuPG, natively or via plugins.  For
-  each e-mail account, you can associate a public key for signing and
-  encryption.
+  each e-mail account or identity, you can associate a public key for
+  signing and encryption.
   \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{images/kmail_conf.eps}
@@ -881,10 +896,37 @@ $ git merge --verify-signatures signed-branch
 \end{slide}
 
 \begin{slide}{Identity management}
+  \begin{itemize}
+  \item Your keypair can include several user IDs (name, e-mail, and
+    comment) for each of your identities
+    \begin{itemize}
+    \item Advantages: convenient (only one keypair to worry about)
+    \item Disadvantage: all your identities are publically linked to
+      each other
+    \end{itemize}
+  \item If you have an identity you want to keep separate, then you
+    must generate a separate keypair for it.
+  \end{itemize}
 \end{slide}
 
 \begin{slide}{Key-signing parties}
-  
+  \begin{itemize}
+  \item A key-signing party is an event at which people present their
+    public keys fingerprints to each other, so that they can later
+    sign the keys and extend the web of trust:
+    \begin{itemize}
+    \item Before the party, participants send their key fingerprints
+      to the organizer, who prepares a master list.
+    \item At the party, the organizer posts the master list and
+      distributes a printed copy to each participant.
+    \item Each participant declares whether their identity and
+      fingerprint on the lists is correct.
+    \item Each participant then verifies the identity of every other
+      participant, and marks the entry on the list.
+    \item After the party, participants sign the keys that passed the
+      identity check, and then upload them to the key server.
+    \end{itemize}
+  \end{itemize}
 \end{slide}
 
 \begin{slide}{Online resources}
@@ -894,6 +936,7 @@ $ git merge --verify-signatures signed-branch
   \item \href{https://riseup.net/en/security/message-security/openpgp/best-practices}{OpenPGP Best Practices} from Riseup
   \item \href{https://keybase.io/}{Keybase}
   \item \href{http://www.openpgp-courses.org/}{OpenPGP courses and lobbying}
+  \item \href{http://cryptnet.net/fdp/crypto/keysigning_party/en/keysigning_party.html}{The Keysigning Party HOWTO}
   \item
     \href{https://wiki.debian.org/Creating\%20signed\%20GitHub\%20releases}{Creating
       signed GitHub releases}
@@ -911,16 +954,11 @@ $ git merge --verify-signatures signed-branch
 
 \vfill
 
-\mbox{}
-\end{slide}
-
-\begin{slide}[toc=]{Image credits}
-
-  \begin{itemize}
-  \item \href{https://commons.wikimedia.org/wiki/File:Web_of_Trust.svg}{Web of Trust} \copyright\,2009 Ogmios. CC-BY-SA~3.0.
-  \item \href{https://commons.wikimedia.org/wiki/Category:Orange_blue_cryptography_diagrams}{Orange blue cryptography diagrams} by Bananenfalter. CC0~1.0.
-  \end{itemize}
-
+\tiny Image credits:
+\href{https://commons.wikimedia.org/wiki/File:Web_of_Trust.svg}{Web of
+  Trust} \copyright\,2009 Ogmios. CC-BY-SA~3.0.
+\href{https://commons.wikimedia.org/wiki/Category:Orange_blue_cryptography_diagrams}{Orange
+  blue cryptography diagrams} by Bananenfalter. CC0~1.0.
 \end{slide}
 
 \end{document}
