@@ -835,14 +835,52 @@ Your decision?
   \end{figure}
 \end{slide}
 
-\begin{slide}{SCM integration}
+\makeatletter\renewcommand{\verbatim@font}{\footnotesize\tt}\makeatother
+\begin{slide}[method=direct]{Git integration}
+  \begin{itemize}
+  \item Signing contributions protects your reputation from impostors.
+  \item Verifying signed commits before pulling or merging can help
+    protect your repository's integrity against impostors.
+  \end{itemize}
 
+Setting a default signing key:
+
+\vsp
+\begin{verbatim}
+$ git config --global user.signingkey 4116CBB0
+\end{verbatim}
+
+Signing and verifying tags:
+
+\vsp
+\begin{verbatim}
+$ git tag -s v1.5 -m 'my signed 1.5 tag'
+$ git tag -v v1.5
+\end{verbatim}
+
+Signing and verifying commits:
+
+\vsp
+\begin{verbatim}
+$ git commit -S -m 'signed commit'
+$ git log --show-signature
+$ git merge --verify-signatures signed-branch
+\end{verbatim}
 \end{slide}
 
 \begin{slide}{Packaging integration}
   \begin{itemize}
-  \item Many software packaging tools support GnuPG, natively or via plugins.
+  \item Many software packaging and release tools support GnuPG,
+    natively or via plugins.
+  \item The Maven release plugin handles this automatically (at least
+    for binary releases).
+  \item For manually posting source or binary releases on the Web or
+    on GitHub, produce a detached signature of the release and upload
+    it alongside the release.
   \end{itemize}
+\end{slide}
+
+\begin{slide}{Identity management}
 \end{slide}
 
 \begin{slide}{Key-signing parties}
@@ -856,6 +894,11 @@ Your decision?
   \item \href{https://riseup.net/en/security/message-security/openpgp/best-practices}{OpenPGP Best Practices} from Riseup
   \item \href{https://keybase.io/}{Keybase}
   \item \href{http://www.openpgp-courses.org/}{OpenPGP courses and lobbying}
+  \item
+    \href{https://wiki.debian.org/Creating\%20signed\%20GitHub\%20releases}{Creating
+      signed GitHub releases}
+  \item \href{https://mikegerwitz.com/papers/git-horror-story}{A Git
+      Horror Story: Repository Integrity with Signed Commits}
   \end{itemize}
 \end{slide}
 
