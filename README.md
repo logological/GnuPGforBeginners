@@ -12,7 +12,8 @@ the
   Ubiquitous Knowledge Processing Lab on August 16, 2016
 * the Knowledge Management Department of the
 [German Research Center for Artificial Intelligence](http://www.dfki.de/)
-on January 28, 2005
+on January 28, 2005 (see the
+[UKPSigDev_20160816 branch](https://github.com/logological/GnuPGforBeginners/tree/UKPSigDev_20160816))
 
 The slides use the Powerdot presentation class, and must be compiled
 using `latex` + `dvips` + `ps2pdf`.  (Using `pdflatex`, `xelatex`,
