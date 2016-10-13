@@ -20,7 +20,7 @@ size=20pt,
   Department of Computer Science\\
   Technische Universit\"at Darmstadt
 }
-\date{August 16, 2016}
+\date{October 13, 2016}
 \pdsetup{
   lf={GnuPG for Beginners},
   palette={blue},
@@ -31,7 +31,7 @@ size=20pt,
 
 \begin{slide}[toc=]{Overview}
   \begin{itemize}
-  \item Introduction of symmetric and public-key cryptography
+  \item Introduction to symmetric and public-key cryptography
   \item GnuPG: A free implementation of the OpenPGP standard
     \begin{itemize}
     \item Creating and managing keys
@@ -110,6 +110,10 @@ size=20pt,
 \centering\includegraphics[width=0.9\linewidth]{images/Orange_blue_digital_signature_en.eps}
 \end{slide}
 
+\begin{slide}[toc=]{Digital signatures}
+\centering\includegraphics[width=0.8\linewidth]{images/Cryptographic_Hash_Function.eps}
+\end{slide}
+
 \begin{slide}{Web of trust}
   \begin{itemize}
   \item When you have faith that a certain public key belongs to a
@@ -146,7 +150,7 @@ size=20pt,
   \begin{itemize}
   \item By making it a policy of yours to always sign important
     e-mails, you can prevent e-mails from being forged in your name.
-  \item When your colleagues sign their e-mails,
+  \item When your correspondents sign their e-mails,
     you can always be sure you know who you're communicating with.
   \item Signing e-mails prevents deniability---if you receive a signed
     document from someone, they cannot later claim that they did not
@@ -158,7 +162,8 @@ size=20pt,
   Encrypting e-mails containing proposals, results, and publication
   drafts reduces the following risks:\\[1ex]
   \begin{itemize}
-  \item sensitive communications intercepted by or leaked to press
+  \item sensitive communications intercepted by or leaked to press,
+    ``Big Brother'' governments, \etc
   \item research results copied and published by unscrupulous
     colleagues or students
   \item corporate espionage on important projects with business
@@ -465,18 +470,13 @@ sub   2048R/4D993DDE 2016-08-15
 \end{verbatim}
 \end{slide}
 
+\makeatletter\renewcommand{\verbatim@font}{\scriptsize\tt}\makeatother
 \begin{slide}[method=direct]{Signing a key}
   \begin{itemize}
   \item After checking the fingerprint, you may \textbf{sign} the key
     to validate it.
-  \item Ideally you should also tell GnuPG how carefully you have
-    checked that they key you are signing really belongs to who you
-    think it does.
   \end{itemize}
-\end{slide}
-
-\makeatletter\renewcommand{\verbatim@font}{\scriptsize\tt}\makeatother
-\begin{slide}[method=direct,toc=]{Signing a key}
+\vsp
 \begin{verbatim}
 $ gpg --sign-key --ask-cert-level Smith
 
@@ -492,15 +492,10 @@ pub  2048R/65B46947  created: 2016-08-15  expires: never       usage: SC
 
      John Smith <smith@example.com>
 
-How carefully have you verified the key you are about to sign actually belongs
-to the person named above?  If you don't know what to answer, enter "0".
+Are you sure that you want to sign this key with your
+key "Frettchen Rättchen <frettchen@dfki.de>" (4116CBBO)
 
-   (0) I will not answer. (default)
-   (1) I have not checked at all.
-   (2) I have done casual checking.
-   (3) I have done very careful checking.
-
-Your selection? (enter `?' for more information):
+Really sign? (y/N)
 \end{verbatim}
 \end{slide}
 
@@ -942,6 +937,8 @@ $ git merge --verify-signatures signed-branch
       signed GitHub releases}
   \item \href{https://mikegerwitz.com/papers/git-horror-story}{A Git
       Horror Story: Repository Integrity with Signed Commits}
+  \item \href{https://github.com/logological/GnuPGforBeginners}{GnuPG
+      for Beginners} (these tutorial slides, on GitHub)
   \end{itemize}
 \end{slide}
 
