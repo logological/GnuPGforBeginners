@@ -478,7 +478,7 @@ sub   2048R/4D993DDE 2016-08-15
   \end{itemize}
 \vsp
 \begin{verbatim}
-$ gpg --sign-key --ask-cert-level Smith
+$ gpg --sign-key Smith
 
 pub  2048R/65B46947  created: 2016-08-15  expires: never       usage: SC  
                      trust: unknown       validity: full
@@ -683,7 +683,7 @@ WukuStzm7sJLjHl9ootfuxCvOrshmuZVNjxoAhLW1UdPR/b8Wu8gaFmOfSURcTY=
     \end{itemize}
   \item It is therefore possible to output a signature to a separate
     file, leaving the original document intact.
-  \item For this the \clopt{--detach-sig} option is used.
+  \item For this the \clopt{-detach-sig} option is used.
   \end{itemize}
 \begin{verbatim}
 $ gpg --armor --output hello.sig --detach-sig hello.txt
