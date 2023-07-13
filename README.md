@@ -4,6 +4,9 @@ This project contains slides for "GnuPG for Beginners", a tutorial by
 [Tristan Miller](https://logological.org/).  Versions of the tutorial
 have been presented at:
 
+* the Research Studios Austria FG Learning Lab on July 13 and 20, 2023
+  (see the [2023-07_RSA
+  branch](https://github.com/logological/GnuPGforBeginners/tree/2023-07_RSA))
 * the Winterophase 2016 workshops at Technische Universität
 Darmstadt's Department of Computer Science on October 13, 2016 (see
 the
