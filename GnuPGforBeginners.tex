@@ -18,7 +18,7 @@ size=20pt,
   Tristan Miller\\
   Research Studios Austria FG
 }
-\date{July 6 and 13, 2023}
+\date{July 13 and 20, 2023}
 \pdsetup{
   lf={GnuPG for Beginners},
   palette={blue},
@@ -220,37 +220,41 @@ size=20pt,
 \begin{slide}[method=direct]{Generating keypairs}
   \begin{itemize}
   \item All GnuPG functions are invoked through the \texttt{gpg} command.
-  \item The command-line option \clopt{-gen-key} is used to create a new
-  primary keypair.
+  \item The command-line options \clopt{-gen-key} or
+    \clopt{-full-generate-key} are used to create a new primary
+    keypair
   \end{itemize}
+\vsp
 \begin{verbatim}
-$ gpg --gen-key
-gpg (GnuPG) 2.3.8; Copyright (C) 2021 Free Software Foundation, Inc.
-This is free software: you are free to change and redistribute it.
-There is NO WARRANTY, to the extent permitted by law.
+$ gpg --full-generate-key
 
 Please select what kind of key you want:
-   (1) RSA and RSA (default)
+   (1) RSA and RSA
    (2) DSA and Elgamal
    (3) DSA (sign only)
    (4) RSA (sign only)
+   (9) ECC (sign and encrypt) *default*
+  (10) ECC (sign only)
+  (14) Existing key from card
 Your selection?
 \end{verbatim}
 \end{slide}
 
 \begin{slide}[method=direct,toc=]{Generating a new keypair}
   \begin{itemize}
-  \item You will be prompted for a key type and key size.
-  \item The defaults (2048-bit RSA keys, in recent GnuPG versions) are
-    generally sensible.
+  \item You will be prompted for a key type and other key properties
+    (size or curve).
+  \item The defaults are generally sensible.
   \item Larger key sizes provide extra security at the cost of speed;
-    if future-proofing is important for you, use the maximum key size
-    of 4096 bits.
+    if future-proofing is important for you, use the maximum key size.
   \end{itemize}
 \begin{verbatim}
-Your selection? 1
-RSA keys may be between 1024 and 4096 bits long.
-What keysize do you want? (2048)
+Your selection? 9
+Please select which elliptic curve you want:
+   (1) Curve 25519 *default*
+   (4) NIST P-384
+   (6) Brainpool P-256
+Your selection?
 \end{verbatim}
 \end{slide}
 
@@ -258,9 +262,9 @@ What keysize do you want? (2048)
   \begin{itemize}
   \item Next, you must choose an expiration date.
   \item For most users, a key that does not expire is adequate.
-  \item Some people prefer to set an expiry date (say, two years) as a
-    safeguard. You can periodically extend the expiry date if your key
-    is still in use.
+  \item Some people prefer to set an expiry date (say, two years). You
+    can periodically extend the expiry date if your key is still in
+    use. % This doesn't add any extra security, since anyone who manages to obtain your private key can always extend the expiration date themselves.
   \end{itemize}
 \begin{verbatim}
 Please specify how long the key should be valid.
@@ -280,7 +284,7 @@ Key is valid for? (0)
     want to use the key in two or more contexts.
   \item A user ID should be created carefully since it cannot be
     edited after it is created!
-  \item Avoid using the ``Comment'' field without good reason.
+  \item Avoid using the ``Comment'' field without good reason. % Because other people who sign your keys will see this comment field, and may be hesitant to sign if it contains something they can't verify for themselves.
   \end{itemize}
 \vsp
 \begin{verbatim}
@@ -289,7 +293,6 @@ GnuPG needs to construct a user ID to identify your key.
 Real name: Frettchen Rättchen
 Email address: frettchen@dfki.de
 Comment: 
-You are using the `utf-8' character set.
 You selected this USER-ID:
     "Frettchen Rättchen <frettchen@dfki.de>"
 
@@ -313,7 +316,7 @@ Enter passphrase:
   \item Because this passphrase protects access to your PGP identity, it
     should be carefully chosen.  It must be long enough to be secure,
     but also easy for you to remember and type.
-  \item At \url{http://www.diceware.com/} you will find a method of
+  \item At \url{https://www.diceware.com/} you will find a method of
     generating long but easy-to-remember passphrases by combining five
     English or German words.
 
@@ -328,17 +331,23 @@ Enter passphrase:
     generated or imported.  You can view it with the
     \clopt{-list-keys} option:
   \end{itemize}
+\vsp
 \begin{verbatim}
 $ gpg --list-keys
-/home/frettchen/.gnupg/pubring.gpg
+/home/frettchen/.gnupg/pubring.kbx
 ----------------------------------
-pub   2048R/4116CBB0 2016-08-15
-uid       [ultimate] Frettchen Rättchen <frettchen@dfki.de>
-sub   2048R/FA659AB0 2016-08-15
+pub   ed25519 2023-07-13 [SC] [expires: 2025-07-12]
+      3AF66FB4B7955CBC8D97E00945C41022D0323F26
+uid           [ultimate] Frettchen Rättchen <frettchen@dfki.de>
+sub   cv25519 2023-07-13 [E] [expires: 2025-07-12]
 
-pub  1024D/EFBF4915 2003-10-24 Tristan Miller (Research scientist) <tristan.miller@dfki.de>
-uid                            Tristan Miller <psychonaut@nothingisreal.com>
-sub  1024g/B40BE860 2003-10-24
+pub   rsa4096 2014-02-25 [SC]
+      D9615C87451DA2BCEB90120436EEC05BBF8A2EE4
+uid           [ unknown] Tristan Miller <tristan.miller@ofai.at>
+uid           [ unknown] Tristan Miller <tristan@logological.org>
+uid           [ unknown] Tristan Miller <miller@ukp.informatik.tu-darmstadt.de>
+uid           [ unknown] Tristan Miller <psychonaut@nothingisreal.com>
+sub   rsa4096 2014-02-25 [E]
 \end{verbatim}
 \end{slide}
 
@@ -350,9 +359,13 @@ sub  1024g/B40BE860 2003-10-24
   \end{itemize}
 \begin{verbatim}
 $ gpg --list-keys Tristan
-pub  1024D/EFBF4915 2003-10-24 Tristan Miller (Research scientist) <tristan.miller@dfki.de>
-uid                            Tristan Miller <psychonaut@nothingisreal.com>
-sub  1024g/B40BE860 2003-10-24
+pub   rsa4096 2014-02-25 [SC]
+      D9615C87451DA2BCEB90120436EEC05BBF8A2EE4
+uid           [ unknown] Tristan Miller <tristan.miller@ofai.at>
+uid           [ unknown] Tristan Miller <tristan@logological.org>
+uid           [ unknown] Tristan Miller <miller@ukp.informatik.tu-darmstadt.de>
+uid           [ unknown] Tristan Miller <psychonaut@nothingisreal.com>
+sub   rsa4096 2014-02-25 [E]
 \end{verbatim}
 \end{slide}
 
@@ -368,7 +381,7 @@ sub  1024g/B40BE860 2003-10-24
 \begin{verbatim}
 $ gpg --output revoke.asc --gen-revoke Frettchen
 
-sec  2048R/4116CBB0 2016-08-15 Frettchen Rättchen <frettchen@dfki.de>
+sec  ed25519/45C41022D0323F26 2023-07-13 Frettchen Rättchen <frettchen@dfki.de>
 
 Create a revocation certificate for this key? (y/N) y
 Please select the reason for the revocation:
@@ -399,14 +412,14 @@ Your decision?
 \begin{verbatim}
 $ gpg --armor --export Frettchen
 -----BEGIN PGP PUBLIC KEY BLOCK-----
-Version: GnuPG v2
 
-mQENBFex0P4BCADR8+CMx/j8mIMQEMWjS/2GOSth1tR5mSwuk31oPMn0xtPTY+oK
-BshOMDJjujJew/+aJBu2rTBGQdfza4W/jBLy/uwU8C92+Rp6SBsPw9P+f0g297pm
-                             ...
-WWKwsmkDsqlJzdDVsFHYYJTHy+MUBRzrVbuG8lscCeOVUnUf8oIkiydrCwprl249
-iz5kKxk4VcCdEmfEluj9AZxhONKKnH4X+cyVrk9tIsup9mjMCqCv
-=9bBk
+mDMEZK/oZRYJKwYBBAHaRw8BAQdAAgw8j/oviAFpwnv0Vk60vzwV8GQHSUMSko4c
+NKaHPR20J0ZyZXR0Y2hlbiBSw6R0dGNoZW4gPGZyZXR0Y2hlbkBkZmtpLmRlPoiZ
+                          ...
+PyYFAmSv6GUCGwwFCQPCZwAACgkQRcQQItAyPyaeMgEAm+x9fmA6OcTmMXd2pe6Q
+6mNP76zooNOIZ8NGnJI0EPEBAK5c8RzqYwG/nMfR+7WgzUN6m1VstEvy2KeGZlst
+E8gN
+=JpBF
 -----END PGP PUBLIC KEY BLOCK-----
 \end{verbatim}
 \end{slide}
@@ -420,14 +433,15 @@ iz5kKxk4VcCdEmfEluj9AZxhONKKnH4X+cyVrk9tIsup9mjMCqCv
   \end{itemize}
 \begin{verbatim}
 $ gpg --import /tmp/smith.gpg
-gpg: key 65B46947: public key "John Smith <smith@example.com>" imported
+gpg: key 1D07A19A09633E7E: public key "John Smith <smith@example.com>" imported
 gpg: Total number processed: 1
-gpg:               imported: 1  (RSA: 1)
+gpg:               imported: 1
 
 $ gpg --list-keys Smith
-pub   2048R/65B46947 2016-08-15
-uid       [ unknown] John Smith <smith@example.com>
-sub   2048R/4D993DDE 2016-08-15
+pub   ed25519 2023-07-13 [SC] [expires: 2025-07-12]
+      76D9D8183F99F35CC7DDA4261D07A19A09633E7E
+uid           [ unknown] John Smith <smith@example.com>
+sub   cv25519 2023-07-13 [E] [expires: 2025-07-12]
 \end{verbatim}
 \end{slide}
 
@@ -461,10 +475,10 @@ sub   2048R/4D993DDE 2016-08-15
 \vsp
 \begin{verbatim}
 $ gpg --fingerprint Smith
-pub   2048R/65B46947 2016-08-15
-      Key fingerprint = 42A4 5686 FFC8 B7B1 0FCF  F3BD 397F 0C60 65B4 6947
-uid       [ unknown] John Smith <smith@example.com>
-sub   2048R/4D993DDE 2016-08-15
+pub   ed25519 2023-07-13 [SC] [expires: 2025-07-12]
+      76D9 D818 3F99 F35C C7DD  A426 1D07 A19A 0963 3E7E
+uid           [ unknown] John Smith <smith@example.com>
+sub   cv25519 2023-07-13 [E] [expires: 2025-07-12]
 \end{verbatim}
 \end{slide}
 
@@ -478,21 +492,22 @@ sub   2048R/4D993DDE 2016-08-15
 \begin{verbatim}
 $ gpg --sign-key Smith
 
-pub  2048R/65B46947  created: 2016-08-15  expires: never       usage: SC  
-                     trust: unknown       validity: full
-sub  2048R/4D993DDE  created: 2016-08-15  expires: never       usage: E   
-[  full  ] (1). John Smith <smith@example.com>
+pub  ed25519/1D07A19A09633E7E
+     created: 2023-07-13  expires: 2025-07-12  usage: SC  
+     trust: unknown       validity: unknown
+sub  cv25519/70F453AD7A28C710
+     created: 2023-07-13  expires: 2025-07-12  usage: E   
+[ unknown] (1). John Smith <smith@example.com>
 
-
-pub  2048R/65B46947  created: 2016-08-15  expires: never       usage: SC  
-                     trust: unknown       validity: full
- Primary key fingerprint: 42A4 5686 FFC8 B7B1 0FCF  F3BD 397F 0C60 65B4 6947
-
+pub  ed25519/1D07A19A09633E7E
+     created: 2023-07-13  expires: 2025-07-12  usage: SC  
+     trust: unknown       validity: unknown
+ Primary key fingerprint: 76D9 D818 3F99 F35C C7DD  A426 1D07 A19A 0963 3E7E
      John Smith <smith@example.com>
 
+This key is due to expire on 2025-07-12.
 Are you sure that you want to sign this key with your
-key "Frettchen Rättchen <frettchen@dfki.de>" (4116CBBO)
-
+key "Frettchen Rättchen <frettchen@dfki.de>" (45C41022D0323F26)
 Really sign? (y/N)
 \end{verbatim}
 \end{slide}
@@ -509,16 +524,17 @@ Really sign? (y/N)
 \vsp
 \begin{verbatim}
 $ gpg --check-sigs Smith
-gpg: checking the trustdb
-gpg: 3 marginal(s) needed, 1 complete(s) needed, PGP trust model
-gpg: depth: 0  valid:   1  signed:   1  trust: 0-, 0q, 0n, 0m, 0f, 1u
-gpg: depth: 1  valid:   1  signed:   0  trust: 1-, 0q, 0n, 0m, 0f, 0u
-pub   2048R/65B46947 2016-08-15
-uid       [  full  ] John Smith <smith@example.com>
-sig!3        65B46947 2016-08-15  John Smith <smith@example.com>
-sig!2        4116CBB0 2016-08-15  Frettchen Rättchen <frettchen@dfki.de>
-sub   2048R/4D993DDE 2016-08-15
-sig!         65B46947 2016-08-15  John Smith <smith@example.com>
+gpg: marginals needed: 3  completes needed: 1  trust model: pgp
+gpg: depth: 0  valid:   1  signed:   2  trust: 0-, 0q, 0n, 0m, 0f, 1u
+gpg: depth: 1  valid:   2  signed:   0  trust: 2-, 0q, 0n, 0m, 0f, 0u
+pub   ed25519 2023-07-13 [SC] [expires: 2025-07-12]
+      76D9D8183F99F35CC7DDA4261D07A19A09633E7E
+uid           [  full  ] John Smith <smith@example.com>
+sig!3        1D07A19A09633E7E 2023-07-13  John Smith <smith@example.com>
+sig!         45C41022D0323F26 2023-07-13  Frettchen Rättchen <frettchen@dfki.de>
+sub   cv25519 2023-07-13 [E] [expires: 2025-07-12]
+sig!         1D07A19A09633E7E 2023-07-13  John Smith <smith@example.com>
+gpg: 3 good signatures
 \end{verbatim}
 \end{slide}
 
@@ -548,11 +564,11 @@ sig!         65B46947 2016-08-15  John Smith <smith@example.com>
     specify which keyserver using the \clopt{-keyserver} option.
   \end{itemize}
 \begin{verbatim}
-$ gpg --keyserver hkps://hkps.pool.sks-keyservers.net --send-key BF8A2EE4
-gpg: sending key BF8A2EE4 to hkps server hkps.pool.sks-keyservers.net
+$ gpg --keyserver hkps://keys.openpgp.org --send-key 36EEC05BBF8A2EE4
+gpg: sending key BF8A2EE4 to hkps server hkps://keys.openpgp.org
 
-$ gpg --keyserver hkps://hkps.pool.sks-keyservers.net --recv-key BF8A2EE4
-gpg: requesting key BF8A2EE4 from hkps server hkps.pool.sks-keyservers.net
+$ gpg --keyserver hkps://keys.openpgp.org --recv-key 36EEC05BBF8A2EE4
+gpg: requesting key BF8A2EE4 from hkps server hkps://keys.openpgp.org
 gpg: key BF8A2EE4: "Tristan Miller <tristan@logological.org>" not changed
 gpg: Total number processed: 1
 gpg:              unchanged: 1
@@ -649,23 +665,19 @@ $ gpg --clearsign hello.txt
 
 You need a passphrase to unlock the secret key for
 user: "Frettchen Rättchen <frettchen@dfki.de>"
-2048-bit RSA key, ID 4116CBB0, created 2016-08-15
+255-bit EDDSA key, ID 45C41022D0323F26, created 2023-07-13.
 
 $ cat hello.txt.asc
 -----BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
+Hash: SHA512
 
 Hello, world\!
 -----BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
 
-iQEcBAEBAgAGBQJXsdvKAAoJEFNJFOhBFsuwn/oH/1Io2fYEC/zOIgwEMZqlg2Qi
-SfGiP8mu8l5nIjWBZtvrxltF9oocx8YJBF4Xt0TqAW6XN82dnAaw6+cu3xkcayqh
-BJqFdXsxJ8cqG2kNDjkeO3fkQvVhiUquYI9kRIP1xBH78GdijvRG9pQQl4Ty1hiw
-NkH9GW1eYRtzfckJMOj6DpVzWJNLJg8Jt4oyvKQ28W4zhTIy34ke8McGel9h57dj
-luPU7q38IH6N/9VEoyTLk0tv6DTIId8dqkXz7TJfkMVHIGcsPbHomvx+lPCOn+5F
-WukuStzm7sJLjHl9ootfuxCvOrshmuZVNjxoAhLW1UdPR/b8Wu8gaFmOfSURcTY=
-=tTMY
+iHUEARYKAB0WIQQ69m+0t5VcvI2X4AlFxBAi0DI/JgUCZK/wUwAKCRBFxBAi0DI/
+Jr0oAP45epl3odg1E3z+ySShUsu0H1LVnF5V/FT+9jsGGtCNMgD/eiRFzF2/8NdM
+n4nA1+DLPoLXNYj5PgAC2TkxWE6qeQA=
+=zNYI
 -----END PGP SIGNATURE-----
 \end{verbatim}
 \end{slide}
@@ -697,7 +709,8 @@ $ gpg --armor --output hello.sig --detach-sig hello.txt
   \end{itemize}
 \begin{verbatim}
 $ gpg --verify hello.sig hello.txt
-gpg: Signature made Mon 15 Aug 2016 05:14:28 PM CEST using RSA key ID 4116CBB0
+gpg: Signature made Thu 13 Jul 2023 02:42:49 PM CEST
+gpg:                using EDDSA key 3AF66FB4B7955CBC8D97E00945C41022D0323F26
 gpg: Good signature from "Frettchen Rättchen <frettchen@dfki.de>" [ultimate]
 \end{verbatim}
 \end{slide}
@@ -734,29 +747,29 @@ gpg: Good signature from "Frettchen Rättchen <frettchen@dfki.de>" [ultimate]
 \vspace{-10mm}
 \begin{verbatim}
 $ gpg --edit-key John
-...
-
-pub  2048R/65B46947  created: 2016-08-15  expires: never       usage: SC  
-                     trust: unknown       validity: full
-sub  2048R/4D993DDE  created: 2016-08-15  expires: never       usage: E   
+pub  ed25519/1D07A19A09633E7E
+     created: 2023-07-13  expires: 2025-07-12  usage: SC  
+     trust: unknown       validity: full
+sub  cv25519/70F453AD7A28C710
+     created: 2023-07-13  expires: 2025-07-12  usage: E   
 [  full  ] (1). John Smith <smith@example.com>
 
 gpg> trust
-pub  2048R/65B46947  created: 2016-08-15  expires: never       usage: SC  
-                     trust: unknown       validity: full
-sub  2048R/4D993DDE  created: 2016-08-15  expires: never       usage: E   
+pub  ed25519/1D07A19A09633E7E
+     created: 2023-07-13  expires: 2025-07-12  usage: SC  
+     trust: unknown       validity: full
+sub  cv25519/70F453AD7A28C710
+     created: 2023-07-13  expires: 2025-07-12  usage: E   
 [  full  ] (1). John Smith <smith@example.com>
 
 Please decide how far you trust this user to correctly verify other users' keys
 (by looking at passports, checking fingerprints from different sources, etc.)
-
   1 = I don't know or won't say
   2 = I do NOT trust
   3 = I trust marginally
   4 = I trust fully
   5 = I trust ultimately
   m = back to the main menu
-
 Your decision?
 \end{verbatim}
 \end{slide}
@@ -793,9 +806,9 @@ Your decision?
   \item You can use a local configuration file
     (\texttt{\textasciitilde /.gnupg/gpg.conf}) to set your default
     key, preferred key server, \etc
-  \item You can use \texttt{gpg-agent}, a daemon that securely caches
-    your keys in memory. This way you don't need to type your
-    passphrase every time you want to use your key.
+  \item GnuPG uses \texttt{gpg-agent}, a daemon that securely caches
+    your keys in memory for a set period. This way you don't need to
+    type your passphrase every time you want to use your key.
   \item \texttt{pinentry} is a collection of programs that will prompt
     for your passphrase using your desktop environment's standard
     dialogs rather than on the terminal.
@@ -855,7 +868,7 @@ Setting a default signing key:
 
 \vsp
 \begin{verbatim}
-$ git config --global user.signingkey 4116CBB0
+$ git config --global user.signingkey 36EEC05BBF8A2EE4
 \end{verbatim}
 
 Signing and verifying tags:
@@ -928,7 +941,6 @@ $ git merge --verify-signatures signed-branch
   \item \href{http://security.stackexchange.com/questions/tagged/gnupg}{InfoSec Stack Exchange questions on GnuPG}
   \item \href{https://riseup.net/en/security/message-security/openpgp/best-practices}{OpenPGP Best Practices} from Riseup
   \item \href{https://keybase.io/}{Keybase}
-  \item \href{http://www.openpgp-courses.org/}{OpenPGP courses and lobbying}
   \item \href{http://cryptnet.net/fdp/crypto/keysigning_party/en/keysigning_party.html}{The Keysigning Party HOWTO}
   \item
     \href{https://wiki.debian.org/Creating\%20signed\%20GitHub\%20releases}{Creating
